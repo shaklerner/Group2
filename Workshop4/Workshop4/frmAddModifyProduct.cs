@@ -17,9 +17,9 @@ namespace Workshop4
         {
             InitializeComponent();
         }
-
-        public bool isAdd;
-        public Product? product;
+        private bool isadd = false;
+		public bool isAdd { get; set; }
+		public Product? product;
         public int? selectedSupplier;
 
         private void frmAddModifyProduct_Load(object sender, EventArgs e)

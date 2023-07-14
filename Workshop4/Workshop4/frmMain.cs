@@ -1,3 +1,5 @@
+using System.CodeDom;
+using System.Windows.Forms;
 using Workshop4.Models;
 
 namespace Workshop4
@@ -71,44 +73,18 @@ namespace Workshop4
         }
 
         private void btnAddProd_Click(object sender, EventArgs e)
-        {
-            frmAddModifyProduct secondProductForm = new frmAddModifyProduct();
-            secondProductForm.isAdd = true;
-            secondProductForm.product = null;
-            DialogResult result = secondProductForm.ShowDialog();
-            if (result == DialogResult.OK)
+		{
+			frmAddModifyProduct form = new frmAddModifyProduct();
+            Tasks(typeof(Product), form);
+		}
+
+		private void Tasks(Type Entity, Form form)
             {
-                currentProduct = secondProductForm.product;
+			    Actions.AddHandler(Entity, form);
+			    DisplayProducts();
+		    }
 
-                try
-                {
-                    using (TravelExpertsContext db = new TravelExpertsContext())
-                    {
-                        if (currentProduct != null)
-                        {
-                            db.Products.Add(currentProduct);
-                            db.SaveChanges();
-                            var lastProdId = currentProduct.ProductId;
-                            var lastSupId = secondProductForm.selectedSupplier;
-                            ProductsSupplier productsSupplier = new ProductsSupplier();
-                            productsSupplier.ProductId = lastProdId;
-                            productsSupplier.SupplierId = lastSupId;
-                            db.ProductsSuppliers.Add(productsSupplier);
-                            db.SaveChanges();
-                        }
-                    }
-                }
-                catch (Exception ex )
-                {
-                    MessageBox.Show("Error while adding product: " + 
-                        ex.Message, ex.GetType().ToString());
-                    return;
-                }
-                DisplayProducts();
+		
 
-
-            }
-
-        }
-    }
-}
+	}//class
+}//namespace

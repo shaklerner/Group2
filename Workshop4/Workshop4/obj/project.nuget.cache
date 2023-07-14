@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "45FTaJ4SGXgyQJ1zjyZvK7ybTJh+MNz0BUYx8cBQCl3o+YTMAUiCNXw9papQWme0Q61xqHXmpa1cHJjMj0A4rA==",
+  "dgSpecHash": "7gP2pC0SVBHygGbXKBQ1/IoO0uQD7jAizFwoj2Tg1GqrwR7qP4WKiXldKU42i9fR7l+flNbfykCe54zQPbYqMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LeNi\\source\\repos\\0_TravelExpertsAdmin\\Workshop4\\Workshop4\\Workshop4.csproj",
+  "projectFilePath": "C:\\Users\\LeNi\\source\\repos\\Workshop4\\Workshop4\\Workshop4.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LeNi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\LeNi\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

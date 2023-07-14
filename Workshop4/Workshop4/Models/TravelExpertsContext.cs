@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -41,9 +42,25 @@ namespace Workshop4.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=10.187.207.166, 1433;Initial Catalog=TravelExperts;User Id=sa;Password=Amka999260002;Integrated Security=False");
-            }
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                //                optionsBuilder.UseSqlServer("Data Source=10.187.207.166, 1433;Initial Catalog=TravelExperts;User Id=sa;Password=Amka999260002;Integrated Security=False");
+                try
+                {
+                    optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["TravelExperts"].ConnectionString);
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show("First ConnectionString is not working. Let's try the second one...", "Conncetion String Issue", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    try 
+                    {
+                        optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["WMTravelExperts"].ConnectionString);
+                    }
+                    catch (Exception nxtEx)
+                    {
+						MessageBox.Show(nxtEx.Message, nxtEx.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

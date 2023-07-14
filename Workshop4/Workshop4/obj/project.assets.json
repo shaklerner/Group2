@@ -2004,19 +2004,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amkatsendjargal\\.nuget\\packages\\": {}
+    "C:\\Users\\LeNi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amkatsendjargal\\source\\repos\\Workshop4\\Workshop4\\Workshop4.csproj",
+      "projectUniqueName": "C:\\Users\\LeNi\\source\\repos\\Workshop4\\Workshop4\\Workshop4.csproj",
       "projectName": "Workshop4",
-      "projectPath": "C:\\Users\\amkatsendjargal\\source\\repos\\Workshop4\\Workshop4\\Workshop4.csproj",
-      "packagesPath": "C:\\Users\\amkatsendjargal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amkatsendjargal\\source\\repos\\Workshop4\\Workshop4\\obj\\",
+      "projectPath": "C:\\Users\\LeNi\\source\\repos\\Workshop4\\Workshop4\\Workshop4.csproj",
+      "packagesPath": "C:\\Users\\LeNi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LeNi\\source\\repos\\Workshop4\\Workshop4\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\amkatsendjargal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LeNi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

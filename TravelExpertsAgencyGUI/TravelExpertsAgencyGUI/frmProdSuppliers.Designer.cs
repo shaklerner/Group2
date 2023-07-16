@@ -49,6 +49,7 @@
             btnEditProdSup.TabIndex = 18;
             btnEditProdSup.Text = "&Edit";
             btnEditProdSup.UseVisualStyleBackColor = false;
+            btnEditProdSup.Click += btnEditProdSup_Click;
             // 
             // btnAddProdSup
             // 
@@ -68,6 +69,7 @@
             // 
             // dgvProdSup
             // 
+            dgvProdSup.BackgroundColor = Color.WhiteSmoke;
             dgvProdSup.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProdSup.Location = new Point(18, 92);
             dgvProdSup.Name = "dgvProdSup";

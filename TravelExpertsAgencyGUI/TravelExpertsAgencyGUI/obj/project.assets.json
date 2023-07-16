@@ -2009,11 +2009,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kiran\\source\\repos\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI.csproj",
+      "projectUniqueName": "C:\\Users\\kiran\\Group2\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI.csproj",
       "projectName": "TravelExpertsAgencyGUI",
-      "projectPath": "C:\\Users\\kiran\\source\\repos\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI.csproj",
+      "projectPath": "C:\\Users\\kiran\\Group2\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI.csproj",
       "packagesPath": "C:\\Users\\kiran\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kiran\\source\\repos\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI\\obj\\",
+      "outputPath": "C:\\Users\\kiran\\Group2\\TravelExpertsAgencyGUI\\TravelExpertsAgencyGUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kiran\\AppData\\Roaming\\NuGet\\NuGet.Config",

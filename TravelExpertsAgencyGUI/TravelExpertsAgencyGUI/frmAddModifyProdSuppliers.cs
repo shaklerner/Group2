@@ -12,9 +12,13 @@ namespace TravelExpertsAgencyGUI
 {
     public partial class frmAddModifyProdSuppliers : Form
     {
-        public frmAddModifyProdSuppliers()
+       
+
+        // Constructor for modification mode
+        public frmAddModifyProdSuppliers() 
         {
             InitializeComponent();
+
         }
 
         private void btnAddProdSup_Click(object sender, EventArgs e)

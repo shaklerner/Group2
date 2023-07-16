@@ -96,6 +96,7 @@
             btnSaveProdSup.TabIndex = 24;
             btnSaveProdSup.Text = "&Save";
             btnSaveProdSup.UseVisualStyleBackColor = false;
+           
             // 
             // cboProduct
             // 

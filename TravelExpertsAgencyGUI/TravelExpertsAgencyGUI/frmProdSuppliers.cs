@@ -51,11 +51,12 @@ namespace TravelExpertsAgencyGUI
         // Event handler for the "Add ProdSuppliers" button click
         private void btnAddProdSup_Click(object sender, EventArgs e)
         {
-            // Create the frmAddModifyProdSuppliers form and set its ParentForm property to this instance
-            frmAddModifyProdSuppliers addForm = new frmAddModifyProdSuppliers();            
+            // Create the frmAddModifyPackages form and set its ParentForm property to this instance
+            frmAddModifyProdSuppliers addForm = new frmAddModifyProdSuppliers();
 
-            // Open the frmAddModifyProdSuppliers form in the same panel (pnlMainContent)
-            openFormInPanel(this, addForm);
+
+            // Open the frmAddModifyPackages form in the same panel (pnlMainContent)
+            openFormInPanel(this.ParentForm, addForm);
         }
 
         // Event handler for the "frmProdSuppliers" form load event
@@ -110,6 +111,11 @@ namespace TravelExpertsAgencyGUI
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEditProdSup_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

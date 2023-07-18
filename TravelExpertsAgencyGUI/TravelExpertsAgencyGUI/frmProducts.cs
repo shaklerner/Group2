@@ -45,11 +45,15 @@ namespace TravelExpertsAgencyGUI
                 dgvProducts.Columns[0].HeaderText = "Product ID";
                 dgvProducts.Columns[1].HeaderText = "Product Name";
 
-                // Set the DataGridView's AutoSizeColumnsMode property to fit all cells
-                dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                // Set equal width for both columns
+                dgvProducts.Columns[0].FillWeight = 50;
+                dgvProducts.Columns[1].FillWeight = 50;
 
-                // Auto resize columns
-                dgvProducts.AutoResizeColumns();
+                // Set column AutoSizeMode to Fill
+                dgvProducts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
             }
         }
 

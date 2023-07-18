@@ -31,7 +31,6 @@
             btnAddProdSup = new Button();
             btnDeleteProdSupp = new Button();
             btnSavePackages = new Button();
-            btnExitPackages = new Label();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -49,6 +48,7 @@
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             label7 = new Label();
+            btnExitPackages = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProductSuppliers).BeginInit();
             SuspendLayout();
             // 
@@ -96,17 +96,6 @@
             btnSavePackages.TabIndex = 5;
             btnSavePackages.Text = "&Save";
             btnSavePackages.UseVisualStyleBackColor = false;
-            // 
-            // btnExitPackages
-            // 
-            btnExitPackages.AutoSize = true;
-            btnExitPackages.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExitPackages.Location = new Point(1014, 9);
-            btnExitPackages.Name = "btnExitPackages";
-            btnExitPackages.Size = new Size(24, 25);
-            btnExitPackages.TabIndex = 6;
-            btnExitPackages.Text = "X";
-            btnExitPackages.Click += btnExitPackages_Click_1;
             // 
             // label1
             // 
@@ -252,12 +241,24 @@
             label7.TabIndex = 20;
             label7.Text = "Products ";
             // 
+            // btnExitPackages
+            // 
+            btnExitPackages.AutoSize = true;
+            btnExitPackages.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExitPackages.Location = new Point(1014, 9);
+            btnExitPackages.Name = "btnExitPackages";
+            btnExitPackages.Size = new Size(24, 25);
+            btnExitPackages.TabIndex = 21;
+            btnExitPackages.Text = "X";
+            btnExitPackages.Click += btnExitPackages_Click;
+            // 
             // frmAddModifyPackages
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1050, 550);
+            Controls.Add(btnExitPackages);
             Controls.Add(label7);
             Controls.Add(dgvProductSuppliers);
             Controls.Add(txtAgencyCommission);
@@ -272,14 +273,13 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnExitPackages);
             Controls.Add(btnSavePackages);
             Controls.Add(btnDeleteProdSupp);
             Controls.Add(btnAddProdSup);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmAddModifyPackages";
             Text = "frmAddModifyPackages";
-            Load += frmAddModifyPackages_Load;
+            
             ((System.ComponentModel.ISupportInitialize)dgvProductSuppliers).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -290,7 +290,6 @@
         private Button btnAddProdSup;
         private Button btnDeleteProdSupp;
         private Button btnSavePackages;
-        private Label btnExitPackages;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -308,5 +307,6 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private Label btnExitPackages;
     }
 }

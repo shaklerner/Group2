@@ -60,8 +60,7 @@ namespace TravelExpertsAgencyGUI
                 dgvSuppliers.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                // Auto resize columns
-                dgvSuppliers.AutoResizeColumns();
+                
             }
 
         }

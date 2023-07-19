@@ -32,12 +32,12 @@
             cmbSuppliers = new ComboBox();
             lstProducts = new ListBox();
             btnAddSupplier = new Button();
-            btnRemoveSupplier = new Button();
             btnRemoveProduct = new Button();
             btnAddProduct = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            txtSupplierID = new TextBox();
             SuspendLayout();
             // 
             // btnExit
@@ -73,25 +73,10 @@
             // 
             // btnAddSupplier
             // 
-            btnAddSupplier.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddSupplier.Location = new Point(449, 52);
+            btnAddSupplier.Location = new Point(0, 0);
             btnAddSupplier.Name = "btnAddSupplier";
-            btnAddSupplier.Size = new Size(94, 40);
-            btnAddSupplier.TabIndex = 16;
-            btnAddSupplier.Text = "Add";
-            btnAddSupplier.UseVisualStyleBackColor = true;
-            btnAddSupplier.Click += btnAddSupplier_Click;
-            // 
-            // btnRemoveSupplier
-            // 
-            btnRemoveSupplier.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRemoveSupplier.Location = new Point(549, 52);
-            btnRemoveSupplier.Name = "btnRemoveSupplier";
-            btnRemoveSupplier.Size = new Size(112, 40);
-            btnRemoveSupplier.TabIndex = 17;
-            btnRemoveSupplier.Text = "Remove";
-            btnRemoveSupplier.UseVisualStyleBackColor = true;
-            btnRemoveSupplier.Click += btnRemoveSupplier_Click;
+            btnAddSupplier.Size = new Size(75, 23);
+            btnAddSupplier.TabIndex = 23;
             // 
             // btnRemoveProduct
             // 
@@ -145,17 +130,27 @@
             label3.TabIndex = 22;
             label3.Text = "ID";
             // 
+            // txtSupplierID
+            // 
+            txtSupplierID.Enabled = false;
+            txtSupplierID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSupplierID.Location = new Point(114, 106);
+            txtSupplierID.Name = "txtSupplierID";
+            txtSupplierID.ReadOnly = true;
+            txtSupplierID.Size = new Size(125, 34);
+            txtSupplierID.TabIndex = 24;
+            // 
             // frmSuppliers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1050, 550);
+            Controls.Add(txtSupplierID);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnRemoveProduct);
             Controls.Add(btnAddProduct);
-            Controls.Add(btnRemoveSupplier);
             Controls.Add(btnAddSupplier);
             Controls.Add(lstProducts);
             Controls.Add(cmbSuppliers);
@@ -180,5 +175,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private TextBox txtSupplierID;
     }
 }

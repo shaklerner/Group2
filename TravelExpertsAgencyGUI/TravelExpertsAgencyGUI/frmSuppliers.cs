@@ -61,6 +61,17 @@ namespace TravelExpertsAgencyGUI
 
         private void cmbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int? selected = cmbSuppliers.SelectedValue as int?;
+
+            if (selected != null)
+            {
+                txtSupplierID.Text = $"{selected}";
+            }
+            else
+            {
+                txtSupplierID.Text = "";
+            }
+
             RefreshProducts();
         }
 
@@ -79,7 +90,7 @@ namespace TravelExpertsAgencyGUI
                 cmbSuppliers.ValueMember = "SupplierId";
                 cmbSuppliers.DisplayMember = "SupName";
 
-                if (selectedSupplier != null) 
+                if (selectedSupplier != null)
                     cmbSuppliers.SelectedValue = selectedSupplier;
 
                 RefreshProducts();
@@ -116,7 +127,18 @@ namespace TravelExpertsAgencyGUI
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
+            List<int> productIDsToExclude = new List<int>();
 
+            int? productId = frmSelectProduct.SelectProduct(productIDsToExclude);
+
+            if (productId != null)
+            {
+                using (var db = new TravelExpertsContext())
+                {
+                    var dbPS = new ProductsSupplier();
+                    dbPS.ProductId = productsId;
+                }
+            }
         }
 
         private void btnRemoveProduct_Click(object sender, EventArgs e)
@@ -159,40 +181,6 @@ namespace TravelExpertsAgencyGUI
             //    // Open the frmAddModifyPackages form in the same panel (pnlMainContent)
             //    openFormInPanel(this.ParentForm, addForm);
             //}
-        }
-
-        private void btnAddSupplier_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRemoveSupplier_Click(object sender, EventArgs e)
-        {
-            int? selectedSupplier = cmbSuppliers.SelectedValue as int?;
-
-            if (selectedSupplier == null)
-            {
-                return;
-            }
-
-            using (var db = new TravelExpertsContext())
-            {
-
-                var dbSupplier = db
-                    .Suppliers
-                    .Where(s => s.SupplierId == selectedSupplier)
-                    .SingleOrDefault();
-
-                if (dbSupplier == null)
-                {
-                    return;
-                }
-
-                db.Suppliers.Remove(dbSupplier);
-                db.SaveChanges();
-
-                RefreshDisplay();
-            }
         }
     }
 }

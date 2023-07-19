@@ -87,7 +87,6 @@
             btnRemoveProduct.TabIndex = 19;
             btnRemoveProduct.Text = "Remove";
             btnRemoveProduct.UseVisualStyleBackColor = true;
-            btnRemoveProduct.Click += btnRemoveProduct_Click;
             // 
             // btnAddProduct
             // 
@@ -98,7 +97,6 @@
             btnAddProduct.TabIndex = 18;
             btnAddProduct.Text = "Add";
             btnAddProduct.UseVisualStyleBackColor = true;
-            btnAddProduct.Click += btnAddProduct_Click;
             // 
             // label1
             // 

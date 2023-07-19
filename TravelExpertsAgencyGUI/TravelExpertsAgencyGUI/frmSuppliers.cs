@@ -26,35 +26,7 @@ namespace TravelExpertsAgencyGUI
         private void frmSuppliers_Load(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
-                // Apply styling to the DataGridView
-                dgvSuppliers.EnableHeadersVisualStyles = false;
-                dgvSuppliers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(51, 73, 107);
-                dgvSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dgvSuppliers.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(51, 73, 107);
-                dgvSuppliers.RowHeadersDefaultCellStyle.ForeColor = Color.White;
-                dgvSuppliers.DefaultCellStyle.BackColor = Color.White;
-                dgvSuppliers.DefaultCellStyle.ForeColor = Color.Black;
-                dgvSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(225, 225, 225);
-                dgvSuppliers.Font = new Font("Segoe UI", 9);
-
-                // Change header text
-                dgvSuppliers.Columns[0].HeaderText = "Supplier ID";
-                dgvSuppliers.Columns[1].HeaderText = "Supplier Name";
-
-                // Set equal width for both columns
-                dgvSuppliers.Columns[0].FillWeight = 50;
-                dgvSuppliers.Columns[1].FillWeight = 50;
-
-                // Set column AutoSizeMode to Fill
-                dgvSuppliers.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dgvSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                
-            }
-=======
             RefreshDisplay();
->>>>>>> 3b0372016681571be7a1eec639fa34fb4bee9b6b
 
         }
 
@@ -151,64 +123,6 @@ namespace TravelExpertsAgencyGUI
                 lstProducts.ValueMember = "ProductId";
                 lstProducts.DisplayMember = "ProdName";
             }
-        }
-
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            List<int> productIDsToExclude = new List<int>();
-
-            int? productId = frmSelectProduct.SelectProduct(productIDsToExclude);
-
-            if (productId != null)
-            {
-                using (var db = new TravelExpertsContext())
-                {
-                    var dbPS = new ProductsSupplier();
-                    dbPS.ProductId = productsId;
-                }
-            }
-        }
-
-        private void btnRemoveProduct_Click(object sender, EventArgs e)
-        {
-            int? selectedSupplier = cmbSuppliers.SelectedValue as int?;
-            int? selectedProduct = lstProducts.SelectedValue as int?;
-
-            if (selectedProduct == null || selectedSupplier == null)
-            {
-                return;
-            }
-
-            using (var db = new TravelExpertsContext())
-            {
-
-                var dbProdSup = db
-                    .ProductsSuppliers
-                    .Where(ps => ps.SupplierId == selectedSupplier
-                              && ps.ProductId == selectedProduct)
-                    .SingleOrDefault();
-
-                if (dbProdSup == null)
-                {
-                    MessageBox.Show($"Could not find product supplier for prod = {selectedProduct} and sup = {selectedSupplier}");
-                    return;
-                }
-
-                db.ProductsSuppliers.Remove(dbProdSup);
-                db.SaveChanges();
-
-                RefreshProducts();
-            }
-
-            //private void btnAddSuppliers_Click(object sender, EventArgs e)
-            //{
-            //    // Create the frmAddModifyPackages form and set its ParentForm property to this instance
-            //    frmAddModifySuppliers addForm = new frmAddModifySuppliers();
-
-
-            //    // Open the frmAddModifyPackages form in the same panel (pnlMainContent)
-            //    openFormInPanel(this.ParentForm, addForm);
-            //}
         }
     }
 }

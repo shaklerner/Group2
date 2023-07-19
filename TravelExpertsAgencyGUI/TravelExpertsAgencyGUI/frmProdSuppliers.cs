@@ -11,8 +11,14 @@ using TravelExpertsAgencyGUI.Models;
 
 namespace TravelExpertsAgencyGUI
 {
+    /*
+     * when: July 2023
+     * Author : Kiranpal
+     * 
+     */
     public partial class frmProdSuppliers : Form
     {
+
         public frmProdSuppliers()
         {
             InitializeComponent();
@@ -27,10 +33,15 @@ namespace TravelExpertsAgencyGUI
 
             // Open the frmAddModifyPackages form in the same panel (pnlMainContent)
             Actions.Actions.openFormInPanel(this.ParentForm, addForm);
+           
         }
 
         // Event handler for the "frmProdSuppliers" form load event
         private void frmProdSuppliers_Load(object sender, EventArgs e)
+        {
+            RefreshDataGridView();
+        }
+        private void RefreshDataGridView()
         {
             using (var db = new TravelExpertsContext())
             {
@@ -72,8 +83,8 @@ namespace TravelExpertsAgencyGUI
                 // Alignments
                 dgvProdSup.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                // Auto resize columns
-                dgvProdSup.AutoResizeColumns();
+
+                dgvProdSup.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
@@ -85,7 +96,22 @@ namespace TravelExpertsAgencyGUI
 
         private void btnEditProdSup_Click(object sender, EventArgs e)
         {
+            // Check if a row is selected in dgvProdSuppliers
+            if (dgvProdSup.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // Get the selected ProductSupplier ID from the selected row
+            int selectedProductSupplierId = Convert.ToInt32(dgvProdSup.SelectedRows[0].Cells["ProductSupplierId"].Value);
+            // Create the frmAddModifyProdSuppliers form in edit mode and pass the selected ProductSupplier ID
+            frmAddModifyProdSuppliers editForm = new frmAddModifyProdSuppliers(selectedProductSupplierId);
+
+
+            // Open the frmAddModifyPackages form in the same panel (pnlMainContent)
+            Actions.Actions.openFormInPanel(this.ParentForm, editForm);
         }
-    }
+
+    }   
 }

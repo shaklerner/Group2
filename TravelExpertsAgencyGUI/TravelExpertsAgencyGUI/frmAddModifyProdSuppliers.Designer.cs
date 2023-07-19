@@ -34,10 +34,10 @@
             btnSaveProdSup = new Button();
             cboProduct = new ComboBox();
             cboSupplier = new ComboBox();
-            label3 = new Label();
-            label1 = new Label();
-            txtProductId = new TextBox();
-            label2 = new Label();
+            lblProduct = new Label();
+            lblSupplier = new Label();
+            txtProductSupId = new TextBox();
+            lblProdSupId = new Label();
             SuspendLayout();
             // 
             // btnExit
@@ -80,7 +80,7 @@
             btnAddProdSup.TabIndex = 21;
             btnAddProdSup.Text = "&Add ";
             btnAddProdSup.UseVisualStyleBackColor = false;
-            btnAddProdSup.Click += btnAddProdSup_Click;
+            
             // 
             // btnSaveProdSup
             // 
@@ -96,7 +96,7 @@
             btnSaveProdSup.TabIndex = 24;
             btnSaveProdSup.Text = "&Save";
             btnSaveProdSup.UseVisualStyleBackColor = false;
-           
+            btnSaveProdSup.Click += btnSaveProdSup_Click;
             // 
             // cboProduct
             // 
@@ -114,43 +114,42 @@
             cboSupplier.Size = new Size(224, 28);
             cboSupplier.TabIndex = 26;
             // 
-            // label3
+            // lblProduct
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(116, 151);
-            label3.Name = "label3";
-            label3.Size = new Size(87, 25);
-            label3.TabIndex = 27;
-            label3.Text = "Product :";
+            lblProduct.AutoSize = true;
+            lblProduct.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblProduct.Location = new Point(116, 151);
+            lblProduct.Name = "lblProduct";
+            lblProduct.Size = new Size(87, 25);
+            lblProduct.TabIndex = 27;
+            lblProduct.Text = "Product :";
             // 
-            // label1
+            // lblSupplier
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(116, 214);
-            label1.Name = "label1";
-            label1.Size = new Size(86, 25);
-            label1.TabIndex = 28;
-            label1.Text = "Supplier:";
+            lblSupplier.AutoSize = true;
+            lblSupplier.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSupplier.Location = new Point(116, 214);
+            lblSupplier.Name = "lblSupplier";
+            lblSupplier.Size = new Size(86, 25);
+            lblSupplier.TabIndex = 28;
+            lblSupplier.Text = "Supplier:";
             // 
-            // txtProductId
+            // txtProductSupId
             // 
-            txtProductId.Location = new Point(312, 101);
-            txtProductId.Name = "txtProductId";
-            txtProductId.ReadOnly = true;
-            txtProductId.Size = new Size(224, 27);
-            txtProductId.TabIndex = 30;
+            txtProductSupId.Location = new Point(312, 101);
+            txtProductSupId.Name = "txtProductSupId";
+            txtProductSupId.Size = new Size(224, 27);
+            txtProductSupId.TabIndex = 30;
             // 
-            // label2
+            // lblProdSupId
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(116, 103);
-            label2.Name = "label2";
-            label2.Size = new Size(110, 25);
-            label2.TabIndex = 29;
-            label2.Text = "Product ID :";
+            lblProdSupId.AutoSize = true;
+            lblProdSupId.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblProdSupId.Location = new Point(116, 103);
+            lblProdSupId.Name = "lblProdSupId";
+            lblProdSupId.Size = new Size(185, 25);
+            lblProdSupId.TabIndex = 29;
+            lblProdSupId.Text = "Product Supplier ID :";
             // 
             // frmAddModifyProdSuppliers
             // 
@@ -158,10 +157,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1032, 503);
-            Controls.Add(txtProductId);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(label3);
+            Controls.Add(txtProductSupId);
+            Controls.Add(lblProdSupId);
+            Controls.Add(lblSupplier);
+            Controls.Add(lblProduct);
             Controls.Add(cboSupplier);
             Controls.Add(cboProduct);
             Controls.Add(btnSaveProdSup);
@@ -183,9 +182,9 @@
         private Button btnSaveProdSup;
         private ComboBox cboProduct;
         private ComboBox cboSupplier;
-        private Label label3;
-        private Label label1;
-        private TextBox txtProductId;
-        private Label label2;
+        private Label lblProduct;
+        private Label lblSupplier;
+        private TextBox txtProductSupId;
+        private Label lblProdSupId;
     }
 }

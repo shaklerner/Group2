@@ -13,6 +13,8 @@ namespace TravelExpertsAgencyGUI
 {
     public partial class frmProducts : Form
     {
+        public Product? currentProduct;
+
         public frmProducts()
         {
             InitializeComponent();
@@ -46,11 +48,32 @@ namespace TravelExpertsAgencyGUI
                 dgvProducts.Columns[1].HeaderText = "Product Name";
 
                 // Set the DataGridView's AutoSizeColumnsMode property to fit all cells
-                dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvProducts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                // Auto resize columns
-                dgvProducts.AutoResizeColumns();
             }
+        }
+
+        public void getSelectedProduct()
+        {
+            if (dgvProducts.SelectedRows.Count <= 0 || dgvProducts.SelectedCells.Count <= 0)
+            {
+                int selectedProductID = Convert.ToInt32(dgvProducts.CurrentRow.Cells[0].Value);
+                try
+                {
+                    using (TravelExpertsContext db = new TravelExpertsContext())
+                    {
+                        currentProduct = db.Products.Find(selectedProductID);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while processing selected product for editing." + ex.Message,
+                        ex.GetType().ToString());
+                }
+            }
+            else return;
+            
         }
 
         // Event handler for the "Exit" button click
@@ -65,9 +88,18 @@ namespace TravelExpertsAgencyGUI
             // Create the frmAddModifyPackages form and set its ParentForm property to this instance
             frmAddModifyProducts addForm = new frmAddModifyProducts();
 
-
+            addForm.isAdd = true;
             // Open the frmAddModifyPackages form in the same panel (pnlMainContent)
             Actions.Actions.openFormInPanel(this.ParentForm, addForm);
+        }
+
+        private void btnEditProducts_Click(object sender, EventArgs e)
+        {
+            frmAddModifyProducts editForm = new frmAddModifyProducts();
+            editForm.isAdd = false;
+            getSelectedProduct();
+            editForm.product = currentProduct;
+            Actions.Actions.openFormInPanel(this.ParentForm, editForm);
         }
     }
 }

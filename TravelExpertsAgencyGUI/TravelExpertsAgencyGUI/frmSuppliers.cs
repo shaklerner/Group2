@@ -26,7 +26,35 @@ namespace TravelExpertsAgencyGUI
         private void frmSuppliers_Load(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
+                // Apply styling to the DataGridView
+                dgvSuppliers.EnableHeadersVisualStyles = false;
+                dgvSuppliers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(51, 73, 107);
+                dgvSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvSuppliers.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(51, 73, 107);
+                dgvSuppliers.RowHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvSuppliers.DefaultCellStyle.BackColor = Color.White;
+                dgvSuppliers.DefaultCellStyle.ForeColor = Color.Black;
+                dgvSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(225, 225, 225);
+                dgvSuppliers.Font = new Font("Segoe UI", 9);
+
+                // Change header text
+                dgvSuppliers.Columns[0].HeaderText = "Supplier ID";
+                dgvSuppliers.Columns[1].HeaderText = "Supplier Name";
+
+                // Set equal width for both columns
+                dgvSuppliers.Columns[0].FillWeight = 50;
+                dgvSuppliers.Columns[1].FillWeight = 50;
+
+                // Set column AutoSizeMode to Fill
+                dgvSuppliers.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvSuppliers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                
+            }
+=======
             RefreshDisplay();
+>>>>>>> 3b0372016681571be7a1eec639fa34fb4bee9b6b
 
         }
 

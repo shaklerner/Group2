@@ -174,7 +174,7 @@
 
         private Label btnExit;
         private ListBox lstProducts;
-        
+        private Button btnRemoveSupplier;
         private Button btnEditSupplier;
         private Button btnAddProduct;
         private Label label1;

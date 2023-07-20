@@ -93,14 +93,14 @@ namespace TravelExpertsAgencyGUI
         private void btnEditProdSup_Click(object sender, EventArgs e)
         {
             // Check if a row is selected in dgvProdSuppliers
-            if (dgvProdSup.SelectedRows.Count == 0)
+            if (dgvProdSup.SelectedRows.Count == 0 && dgvProdSup.SelectedCells.Count ==0)
             {
                 MessageBox.Show("Please select a row to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Get the selected ProductSupplier ID from the selected row
-            int selectedProductSupplierId = Convert.ToInt32(dgvProdSup.SelectedRows[0].Cells["ProductSupplierId"].Value);
+            int selectedProductSupplierId = Convert.ToInt32(dgvProdSup.CurrentRow.Cells[0].Value);
             // Create the frmAddModifyProdSuppliers form in edit mode and pass the selected ProductSupplier ID
             frmAddModifyProdSuppliers editForm = new frmAddModifyProdSuppliers(selectedProductSupplierId);
 

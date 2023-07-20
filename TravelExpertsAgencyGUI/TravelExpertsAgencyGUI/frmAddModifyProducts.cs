@@ -49,7 +49,8 @@ namespace TravelExpertsAgencyGUI
 
         private void btnAddProducts_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(txtProductName.Text)) // validator placeholder
+            if (Validator.IsPresent(txtProductName) &&
+                Validator.IsValidProductName(txtProductName)) // validator placeholder
             {
                 if (isAdd)
                 {

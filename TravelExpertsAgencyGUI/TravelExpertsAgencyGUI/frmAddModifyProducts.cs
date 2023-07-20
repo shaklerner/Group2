@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,6 +53,91 @@ namespace TravelExpertsAgencyGUI
             if (!String.IsNullOrWhiteSpace(txtProductName.Text)) // validator placeholder
             {
                 if (isAdd)
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using TravelExpertsAgencyGUI.Models;
+
+namespace TravelExpertsAgencyGUI
+{
+    public partial class frmAddModifyProducts : Form
+    {
+        public bool isAdd;
+        public Product? product;
+        TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
+        public frmAddModifyProducts()
+        {
+            InitializeComponent();
+        }
+
+        private void DisplayProduct()
+        {
+            if (product != null)
+            {
+                txtProductId.Text = product.ProductId.ToString();
+                txtProductName.Text = product.ProdName;
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmProducts());
+        }
+
+        private void frmAddModifyProducts_Load(object sender, EventArgs e)
+        {
+            DisplayProduct();
+            if (!isAdd)
+            {
+                btnAddProducts.Text = "Update";
+            }
+        }
+
+        private void btnAddProducts_Click(object sender, EventArgs e)
+        {
+            if (Validator.IsPresent(txtProductName) &&
+                Validator.IsValidProductName(txtProductName)) // validator placeholder
+            {
+                if (isAdd)
+                {
+                    product = new Product();
+                }
+
+                if (product != null)
+                {
+                    product.ProdName = textInfo.ToTitleCase(txtProductName.Text);
+                }
+                if (isAdd)
+                {
+                    try
+                    {
+                        using (TravelExpertsContext db = new TravelExpertsContext())
+                        {
+                            db.Products.Add(product);
+                            db.SaveChanges();
+                        }
+                        this.Close();
+                        Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmProducts());
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error while adding product." + ex.Message,
+                            ex.GetType().ToString());
+                    }
+                }
+
+                else if (!isAdd)
+>>>>>>> d586852de561c4da2b45c0c04f22d47245944a36
                 {
                     product = new Product();
                 }

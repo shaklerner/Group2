@@ -37,6 +37,7 @@ namespace TravelExpertsAgencyGUI
             // Disable the txtProductSupId textbox in both "Add" and "Edit" modes
             txtProductSupId.Enabled = false;
         }
+
         // Constructor for modification mode
         public frmAddModifyProdSuppliers(int productSupplierId) : this()
         {
@@ -52,6 +53,7 @@ namespace TravelExpertsAgencyGUI
             // Load existing ProductSupplier data and display the selected values in the combo boxes
             LoadProductSupplierData(productSupplierId);
         }
+
 
         // Load data into the cboProducts and cboSuppliers from the database
         private void LoadComboBoxData()
@@ -71,6 +73,7 @@ namespace TravelExpertsAgencyGUI
 
             }
         }
+
         // Load the existing ProductSupplier data and display the selected values in the combo boxes
         private void LoadProductSupplierData(int productSupplierId)
         {
@@ -88,13 +91,11 @@ namespace TravelExpertsAgencyGUI
 
                     // Disable the txtProductSupId textbox and cboProduct comboBox in "Edit" mode
                     txtProductSupId.Enabled = false;
-                    cboProduct.Enabled = true;
+                    cboProduct.Enabled = false;
 
                     // Display the selected product name in the cboProduct
                     cboProduct.Text = productSupplier.Product?.ProdName;
                     cboProduct.DropDownStyle = ComboBoxStyle.DropDown;
-
-
 
                     // Set the selected value for cboProducts and cboSuppliers
                     cboProduct.SelectedValue = productSupplier.ProductId;
@@ -103,6 +104,7 @@ namespace TravelExpertsAgencyGUI
             }
         }
 
+        //close the form
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -111,6 +113,13 @@ namespace TravelExpertsAgencyGUI
 
         private void btnSaveProdSup_Click(object sender, EventArgs e)
         {
+            // Validate that both cboProduct and cboSupplier have valid selections
+            if (cboProduct.SelectedIndex == -1 || cboSupplier.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a valid product and supplier.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the event handler if validation fails
+            }
+
             using (var db = new TravelExpertsContext())
             {
                 if (isEditMode) // Editing an existing ProductSupplier

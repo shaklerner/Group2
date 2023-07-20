@@ -84,19 +84,24 @@
             // 
             // cboProduct
             // 
+            cboProduct.BackColor = SystemColors.Window;
+            cboProduct.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProduct.FormattingEnabled = true;
             cboProduct.Location = new Point(312, 152);
             cboProduct.Name = "cboProduct";
             cboProduct.Size = new Size(224, 28);
             cboProduct.TabIndex = 25;
+            cboProduct.Tag = "Product";
             // 
             // cboSupplier
             // 
+            cboSupplier.BackColor = SystemColors.Window;
             cboSupplier.FormattingEnabled = true;
             cboSupplier.Location = new Point(312, 211);
             cboSupplier.Name = "cboSupplier";
             cboSupplier.Size = new Size(224, 28);
             cboSupplier.TabIndex = 26;
+            cboSupplier.Tag = "Supplier";
             // 
             // lblProduct
             // 
@@ -120,10 +125,12 @@
             // 
             // txtProductSupId
             // 
+            txtProductSupId.BackColor = Color.WhiteSmoke;
             txtProductSupId.Location = new Point(312, 101);
             txtProductSupId.Name = "txtProductSupId";
             txtProductSupId.Size = new Size(224, 27);
             txtProductSupId.TabIndex = 30;
+            txtProductSupId.Tag = "ProductSupplierId";
             // 
             // lblProdSupId
             // 

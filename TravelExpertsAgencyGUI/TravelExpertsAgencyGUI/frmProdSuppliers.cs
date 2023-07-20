@@ -33,7 +33,7 @@ namespace TravelExpertsAgencyGUI
 
             // Open the frmAddModifyPackages form in the same panel (pnlMainContent)
             Actions.Actions.openFormInPanel(this.ParentForm, addForm);
-           
+
         }
 
         // Event handler for the "frmProdSuppliers" form load event
@@ -88,11 +88,7 @@ namespace TravelExpertsAgencyGUI
             }
         }
 
-        // Event handler for the "Exit" button click
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
 
         private void btnEditProdSup_Click(object sender, EventArgs e)
         {
@@ -113,5 +109,10 @@ namespace TravelExpertsAgencyGUI
             Actions.Actions.openFormInPanel(this.ParentForm, editForm);
         }
 
-    }   
+        // Event handler for the "Exit" button click
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
 }

@@ -55,7 +55,7 @@ namespace TravelExpertsAgencyGUI
 
         public void getSelectedProduct()
         {
-            if (dgvProducts.SelectedRows.Count <= 0 || dgvProducts.SelectedCells.Count <= 0)
+            if (dgvProducts.SelectedRows.Count >= 0 || dgvProducts.SelectedCells.Count >= 0)
             {
                 int selectedProductID = Convert.ToInt32(dgvProducts.CurrentRow.Cells[0].Value);
                 try
@@ -72,7 +72,7 @@ namespace TravelExpertsAgencyGUI
                 }
             }
             else return;
-            
+
         }
 
         // Event handler for the "Exit" button click

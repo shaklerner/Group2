@@ -18,15 +18,9 @@ namespace TravelExpertsAgencyGUI
         {
             InitializeComponent();
 
-        }
-        private void frmAddModifyPackages_Load(object sender, EventArgs e)
+        }           
+        private void btnExitPackages_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnExitPackages_Click_1(object sender, EventArgs e)
-        {
-
             // Close the current frmAddModifyPackages form
             this.Close();
             Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmPackages());

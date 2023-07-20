@@ -1,0 +1,12 @@
+TravelExpertsAgencyGUI/.vs/
+TravelExpertsAgencyGUI/TravelExpertsAgencyGUI/obj/
+TravelExpertsAgencyGUI/TravelExpertsAgencyGUI/bin/
+TravelExpertsAgencyGUI/TravelExpertsAgencyGUI/TravelExpertsAgencyGUI.csproj.user
+Workshop4/.vs/
+Workshop4/Workshop4/obj/
+Workshop4/Workshop4/bin/
+*.vsidx
+*.props
+*.cache
+*.target
+*.user

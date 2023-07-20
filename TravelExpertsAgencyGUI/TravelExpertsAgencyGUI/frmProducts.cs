@@ -50,7 +50,6 @@ namespace TravelExpertsAgencyGUI
                 // Set the DataGridView's AutoSizeColumnsMode property to fit all cells
                 dgvProducts.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 dgvProducts.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
             }
         }
 

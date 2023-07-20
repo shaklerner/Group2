@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             btnExit = new Label();
-            cmbSuppliers = new ComboBox();
             lstProducts = new ListBox();
-            btnAddSupplier = new Button();
-            btnRemoveSupplier = new Button();
-            btnRemoveProduct = new Button();
+            btnEditSupplier = new Button();
             btnAddProduct = new Button();
             label1 = new Label();
+            dgvSuppliers = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            SupplierName = new DataGridViewTextBoxColumn();
             label2 = new Label();
-            label3 = new Label();
+            btnGoProductsSuppliers = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvSuppliers).BeginInit();
             SuspendLayout();
             // 
             // btnExit
@@ -51,65 +52,33 @@
             btnExit.Text = "X";
             btnExit.Click += btnExit_Click;
             // 
-            // cmbSuppliers
-            // 
-            cmbSuppliers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbSuppliers.FormattingEnabled = true;
-            cmbSuppliers.Location = new Point(114, 55);
-            cmbSuppliers.Name = "cmbSuppliers";
-            cmbSuppliers.Size = new Size(329, 36);
-            cmbSuppliers.TabIndex = 14;
-            cmbSuppliers.SelectedIndexChanged += cmbSuppliers_SelectedIndexChanged;
-            // 
             // lstProducts
             // 
             lstProducts.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lstProducts.FormattingEnabled = true;
             lstProducts.ItemHeight = 28;
-            lstProducts.Location = new Point(114, 179);
+            lstProducts.Location = new Point(600, 128);
             lstProducts.Name = "lstProducts";
-            lstProducts.Size = new Size(329, 256);
+            lstProducts.Size = new Size(394, 312);
             lstProducts.TabIndex = 15;
             // 
-            // btnAddSupplier
+            // btnEditSupplier
             // 
-            btnAddSupplier.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddSupplier.Location = new Point(449, 52);
-            btnAddSupplier.Name = "btnAddSupplier";
-            btnAddSupplier.Size = new Size(94, 40);
-            btnAddSupplier.TabIndex = 16;
-            btnAddSupplier.Text = "Add";
-            btnAddSupplier.UseVisualStyleBackColor = true;
-            btnAddSupplier.Click += btnAddSupplier_Click;
-            // 
-            // btnRemoveSupplier
-            // 
-            btnRemoveSupplier.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRemoveSupplier.Location = new Point(549, 52);
-            btnRemoveSupplier.Name = "btnRemoveSupplier";
-            btnRemoveSupplier.Size = new Size(112, 40);
-            btnRemoveSupplier.TabIndex = 17;
-            btnRemoveSupplier.Text = "Remove";
-            btnRemoveSupplier.UseVisualStyleBackColor = true;
-            btnRemoveSupplier.Click += btnRemoveSupplier_Click;
-            // 
-            // btnRemoveProduct
-            // 
-            btnRemoveProduct.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRemoveProduct.Location = new Point(549, 395);
-            btnRemoveProduct.Name = "btnRemoveProduct";
-            btnRemoveProduct.Size = new Size(112, 40);
-            btnRemoveProduct.TabIndex = 19;
-            btnRemoveProduct.Text = "Remove";
-            btnRemoveProduct.UseVisualStyleBackColor = true;
-            btnRemoveProduct.Click += btnRemoveProduct_Click;
+            btnEditSupplier.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEditSupplier.Location = new Point(388, 446);
+            btnEditSupplier.Name = "btnEditSupplier";
+            btnEditSupplier.Size = new Size(100, 40);
+            btnEditSupplier.TabIndex = 19;
+            btnEditSupplier.Text = "Edit";
+            btnEditSupplier.UseVisualStyleBackColor = true;
+            btnEditSupplier.Click += btnEditSupplier_Click;
             // 
             // btnAddProduct
             // 
             btnAddProduct.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddProduct.Location = new Point(449, 395);
+            btnAddProduct.Location = new Point(282, 446);
             btnAddProduct.Name = "btnAddProduct";
-            btnAddProduct.Size = new Size(94, 40);
+            btnAddProduct.Size = new Size(100, 40);
             btnAddProduct.TabIndex = 18;
             btnAddProduct.Text = "Add";
             btnAddProduct.UseVisualStyleBackColor = true;
@@ -119,51 +88,84 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(8, 179);
+            label1.Location = new Point(600, 97);
             label1.Name = "label1";
-            label1.Size = new Size(89, 28);
+            label1.Size = new Size(180, 28);
             label1.TabIndex = 20;
-            label1.Text = "Products";
+            label1.Text = "Supplier's Products";
+            // 
+            // dgvSuppliers
+            // 
+            dgvSuppliers.BackgroundColor = SystemColors.Control;
+            dgvSuppliers.BorderStyle = BorderStyle.None;
+            dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSuppliers.Columns.AddRange(new DataGridViewColumn[] { ID, SupplierName });
+            dgvSuppliers.Location = new Point(45, 128);
+            dgvSuppliers.MultiSelect = false;
+            dgvSuppliers.Name = "dgvSuppliers";
+            dgvSuppliers.RowHeadersVisible = false;
+            dgvSuppliers.RowHeadersWidth = 51;
+            dgvSuppliers.RowTemplate.Height = 29;
+            dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSuppliers.Size = new Size(443, 312);
+            dgvSuppliers.TabIndex = 21;
+            dgvSuppliers.SelectionChanged += dgvSuppliers_SelectionChanged;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 125;
+            // 
+            // SupplierName
+            // 
+            SupplierName.HeaderText = "Supplier Name";
+            SupplierName.MinimumWidth = 6;
+            SupplierName.Name = "SupplierName";
+            SupplierName.ReadOnly = true;
+            SupplierName.Width = 125;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(12, 58);
+            label2.Location = new Point(45, 88);
             label2.Name = "label2";
-            label2.Size = new Size(85, 28);
-            label2.TabIndex = 21;
-            label2.Text = "Supplier";
+            label2.Size = new Size(93, 28);
+            label2.TabIndex = 22;
+            label2.Text = "Suppliers";
             // 
-            // label3
+            // btnGoProductsSuppliers
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(66, 102);
-            label3.Name = "label3";
-            label3.Size = new Size(31, 28);
-            label3.TabIndex = 22;
-            label3.Text = "ID";
+            btnGoProductsSuppliers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGoProductsSuppliers.Location = new Point(870, 446);
+            btnGoProductsSuppliers.Name = "btnGoProductsSuppliers";
+            btnGoProductsSuppliers.Size = new Size(124, 40);
+            btnGoProductsSuppliers.TabIndex = 23;
+            btnGoProductsSuppliers.Text = "More Info";
+            btnGoProductsSuppliers.UseVisualStyleBackColor = true;
+            btnGoProductsSuppliers.Click += btnGoProductsSuppliers_Click;
             // 
             // frmSuppliers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1050, 550);
-            Controls.Add(label3);
+            Controls.Add(btnGoProductsSuppliers);
             Controls.Add(label2);
+            Controls.Add(dgvSuppliers);
             Controls.Add(label1);
-            Controls.Add(btnRemoveProduct);
+            Controls.Add(btnEditSupplier);
             Controls.Add(btnAddProduct);
-            Controls.Add(btnRemoveSupplier);
-            Controls.Add(btnAddSupplier);
             Controls.Add(lstProducts);
-            Controls.Add(cmbSuppliers);
             Controls.Add(btnExit);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmSuppliers";
             Text = "frmSuppliers";
             Load += frmSuppliers_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvSuppliers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -171,14 +173,15 @@
         #endregion
 
         private Label btnExit;
-        private ComboBox cmbSuppliers;
         private ListBox lstProducts;
-        private Button btnAddSupplier;
         private Button btnRemoveSupplier;
-        private Button btnRemoveProduct;
+        private Button btnEditSupplier;
         private Button btnAddProduct;
         private Label label1;
+        private DataGridView dgvSuppliers;
         private Label label2;
-        private Label label3;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn SupplierName;
+        private Button btnGoProductsSuppliers;
     }
 }

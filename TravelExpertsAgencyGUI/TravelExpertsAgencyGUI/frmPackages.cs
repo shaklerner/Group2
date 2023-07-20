@@ -73,9 +73,8 @@ namespace TravelExpertsAgencyGUI
 
                 // Alignments
                 dgvPackages.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPackages.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-                // Auto resize columns
-                dgvPackages.AutoResizeColumns();
             }
         }
 

@@ -82,10 +82,13 @@
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.ForeColor = SystemColors.ActiveCaptionText;
             txtName.Location = new Point(288, 255);
+            txtName.MaxLength = 255;
             txtName.Name = "txtName";
             txtName.Size = new Size(462, 34);
             txtName.TabIndex = 24;
+            txtName.Tag = "Supplier Name";
             // 
             // label2
             // 

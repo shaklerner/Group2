@@ -98,8 +98,9 @@
             btnSaveProduct.Name = "btnSaveProduct";
             btnSaveProduct.Size = new Size(221, 75);
             btnSaveProduct.TabIndex = 15;
-            btnSaveProduct.Text = "&Save";
+            btnSaveProduct.Text = "&Cancel";
             btnSaveProduct.UseVisualStyleBackColor = false;
+            btnSaveProduct.Click += btnExit_Click;
             // 
             // txtProductId
             // 

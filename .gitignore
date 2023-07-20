@@ -10,3 +10,4 @@ Workshop4/Workshop4/bin/
 *.cache
 *.target
 *.user
+*.DS_Store

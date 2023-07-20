@@ -80,7 +80,7 @@ namespace TravelExpertsAgencyGUI
                 }
 
                 else if (!isAdd)
-                {  
+                {
                     var confirmEdit = MessageBox.Show("Are you sure you want to edit product?",
                         "Confirm", MessageBoxButtons.YesNo);
                     if (confirmEdit == DialogResult.Yes)
@@ -89,10 +89,11 @@ namespace TravelExpertsAgencyGUI
                         {
                             using (TravelExpertsContext db = new TravelExpertsContext())
                             {
+                                db.Products.Find(product.ProductId).ProdName = textInfo.ToTitleCase(txtProductName.Text);
                                 db.SaveChanges();
                             }
                             this.Close();
-                            //Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmProducts());
+                            Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmProducts());
                         }
                         catch (Exception ex)
                         {
@@ -102,7 +103,7 @@ namespace TravelExpertsAgencyGUI
                     }
                     else return;
                 }
-                
+
             }
         }
     }

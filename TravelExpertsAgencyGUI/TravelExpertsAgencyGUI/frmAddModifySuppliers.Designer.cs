@@ -28,110 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label3 = new Label();
-            label2 = new Label();
-            txtSupplierId = new TextBox();
-            txtSupplierName = new TextBox();
-            btnGenerateIdSupplier = new Button();
-            btnEditSupplier = new Button();
-            btnAddSupplier = new Button();
-            btnSaveSupplier = new Button();
             btnExitSuppliers = new Label();
+            lblMode = new Label();
+            label1 = new Label();
+            txtID = new TextBox();
+            txtName = new TextBox();
+            label2 = new Label();
+            btnConfirm = new Button();
+            btnCancel = new Button();
             SuspendLayout();
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(50, 203);
-            label3.Name = "label3";
-            label3.Size = new Size(146, 25);
-            label3.TabIndex = 10;
-            label3.Text = "Supplier Name :";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(50, 157);
-            label2.Name = "label2";
-            label2.Size = new Size(114, 25);
-            label2.TabIndex = 11;
-            label2.Text = "Supplier ID :";
-            // 
-            // txtSupplierId
-            // 
-            txtSupplierId.Location = new Point(201, 155);
-            txtSupplierId.Name = "txtSupplierId";
-            txtSupplierId.Size = new Size(209, 27);
-            txtSupplierId.TabIndex = 12;
-            // 
-            // txtSupplierName
-            // 
-            txtSupplierName.Location = new Point(202, 201);
-            txtSupplierName.Name = "txtSupplierName";
-            txtSupplierName.Size = new Size(208, 27);
-            txtSupplierName.TabIndex = 13;
-            // 
-            // btnGenerateIdSupplier
-            // 
-            btnGenerateIdSupplier.BackColor = Color.FromArgb(51, 73, 107);
-            btnGenerateIdSupplier.FlatAppearance.BorderSize = 0;
-            btnGenerateIdSupplier.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
-            btnGenerateIdSupplier.FlatStyle = FlatStyle.Flat;
-            btnGenerateIdSupplier.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnGenerateIdSupplier.ForeColor = Color.White;
-            btnGenerateIdSupplier.Location = new Point(438, 139);
-            btnGenerateIdSupplier.Name = "btnGenerateIdSupplier";
-            btnGenerateIdSupplier.Size = new Size(136, 43);
-            btnGenerateIdSupplier.TabIndex = 14;
-            btnGenerateIdSupplier.Text = "&Generate Id";
-            btnGenerateIdSupplier.UseVisualStyleBackColor = false;
-            // 
-            // btnEditSupplier
-            // 
-            btnEditSupplier.BackColor = Color.FromArgb(51, 73, 107);
-            btnEditSupplier.FlatAppearance.BorderSize = 0;
-            btnEditSupplier.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
-            btnEditSupplier.FlatStyle = FlatStyle.Flat;
-            btnEditSupplier.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEditSupplier.ForeColor = Color.White;
-            btnEditSupplier.Location = new Point(189, 12);
-            btnEditSupplier.Name = "btnEditSupplier";
-            btnEditSupplier.Size = new Size(136, 47);
-            btnEditSupplier.TabIndex = 16;
-            btnEditSupplier.Text = "&Edit";
-            btnEditSupplier.UseVisualStyleBackColor = false;
-            // 
-            // btnAddSupplier
-            // 
-            btnAddSupplier.BackColor = Color.FromArgb(51, 73, 107);
-            btnAddSupplier.FlatAppearance.BorderSize = 0;
-            btnAddSupplier.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
-            btnAddSupplier.FlatStyle = FlatStyle.Flat;
-            btnAddSupplier.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddSupplier.ForeColor = Color.White;
-            btnAddSupplier.Location = new Point(28, 12);
-            btnAddSupplier.Name = "btnAddSupplier";
-            btnAddSupplier.Size = new Size(136, 47);
-            btnAddSupplier.TabIndex = 15;
-            btnAddSupplier.Text = "&Add";
-            btnAddSupplier.UseVisualStyleBackColor = false;
-            // 
-            // btnSaveSupplier
-            // 
-            btnSaveSupplier.BackColor = Color.FromArgb(51, 73, 107);
-            btnSaveSupplier.FlatAppearance.BorderSize = 0;
-            btnSaveSupplier.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
-            btnSaveSupplier.FlatStyle = FlatStyle.Flat;
-            btnSaveSupplier.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSaveSupplier.ForeColor = Color.White;
-            btnSaveSupplier.Location = new Point(355, 12);
-            btnSaveSupplier.Name = "btnSaveSupplier";
-            btnSaveSupplier.Size = new Size(136, 47);
-            btnSaveSupplier.TabIndex = 18;
-            btnSaveSupplier.Text = "&Save";
-            btnSaveSupplier.UseVisualStyleBackColor = false;
             // 
             // btnExitSuppliers
             // 
@@ -144,21 +49,90 @@
             btnExitSuppliers.Text = "X";
             btnExitSuppliers.Click += btnExitSuppliers_Click;
             // 
+            // lblMode
+            // 
+            lblMode.AutoSize = true;
+            lblMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMode.Location = new Point(218, 126);
+            lblMode.Name = "lblMode";
+            lblMode.Size = new Size(171, 28);
+            lblMode.TabIndex = 20;
+            lblMode.Text = "Add New Supplier";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(218, 207);
+            label1.Name = "label1";
+            label1.Size = new Size(31, 28);
+            label1.TabIndex = 21;
+            label1.Text = "ID";
+            // 
+            // txtID
+            // 
+            txtID.Enabled = false;
+            txtID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtID.Location = new Point(288, 204);
+            txtID.Name = "txtID";
+            txtID.ReadOnly = true;
+            txtID.Size = new Size(125, 34);
+            txtID.TabIndex = 22;
+            // 
+            // txtName
+            // 
+            txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(288, 255);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(462, 34);
+            txtName.TabIndex = 24;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(218, 258);
+            label2.Name = "label2";
+            label2.Size = new Size(64, 28);
+            label2.TabIndex = 23;
+            label2.Text = "Name";
+            // 
+            // btnConfirm
+            // 
+            btnConfirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConfirm.Location = new Point(650, 316);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.Size = new Size(100, 40);
+            btnConfirm.TabIndex = 25;
+            btnConfirm.Text = "Confirm";
+            btnConfirm.UseVisualStyleBackColor = true;
+            btnConfirm.Click += btnConfirm_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancel.Location = new Point(544, 316);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(100, 40);
+            btnCancel.TabIndex = 26;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
             // frmAddModifySuppliers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1032, 503);
-            Controls.Add(btnExitSuppliers);
-            Controls.Add(btnSaveSupplier);
-            Controls.Add(btnEditSupplier);
-            Controls.Add(btnAddSupplier);
-            Controls.Add(btnGenerateIdSupplier);
-            Controls.Add(txtSupplierName);
-            Controls.Add(txtSupplierId);
+            Controls.Add(btnCancel);
+            Controls.Add(btnConfirm);
+            Controls.Add(txtName);
             Controls.Add(label2);
-            Controls.Add(label3);
+            Controls.Add(txtID);
+            Controls.Add(label1);
+            Controls.Add(lblMode);
+            Controls.Add(btnExitSuppliers);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmAddModifySuppliers";
             Text = "frmAddModifySuppliers";
@@ -167,15 +141,13 @@
         }
 
         #endregion
-
-        private Label label3;
-        private Label label2;
-        private TextBox txtSupplierId;
-        private TextBox txtSupplierName;
-        private Button btnGenerateIdSupplier;
-        private Button btnEditSupplier;
-        private Button btnAddSupplier;
-        private Button btnSaveSupplier;
         private Label btnExitSuppliers;
+        private Label lblMode;
+        private Label label1;
+        private TextBox txtID;
+        private TextBox txtName;
+        private Label label2;
+        private Button btnConfirm;
+        private Button btnCancel;
     }
 }

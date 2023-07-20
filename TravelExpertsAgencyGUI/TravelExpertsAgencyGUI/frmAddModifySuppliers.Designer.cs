@@ -42,10 +42,9 @@
             // 
             btnExitSuppliers.AutoSize = true;
             btnExitSuppliers.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExitSuppliers.Location = new Point(1618, 14);
-            btnExitSuppliers.Margin = new Padding(5, 0, 5, 0);
+            btnExitSuppliers.Location = new Point(996, 9);
             btnExitSuppliers.Name = "btnExitSuppliers";
-            btnExitSuppliers.Size = new Size(38, 41);
+            btnExitSuppliers.Size = new Size(24, 25);
             btnExitSuppliers.TabIndex = 19;
             btnExitSuppliers.Text = "X";
             btnExitSuppliers.Click += btnExitSuppliers_Click;
@@ -54,10 +53,9 @@
             // 
             lblMode.AutoSize = true;
             lblMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMode.Location = new Point(354, 202);
-            lblMode.Margin = new Padding(5, 0, 5, 0);
+            lblMode.Location = new Point(218, 126);
             lblMode.Name = "lblMode";
-            lblMode.Size = new Size(278, 45);
+            lblMode.Size = new Size(171, 28);
             lblMode.TabIndex = 20;
             lblMode.Text = "Add New Supplier";
             // 
@@ -65,10 +63,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(354, 331);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Location = new Point(218, 207);
             label1.Name = "label1";
-            label1.Size = new Size(51, 45);
+            label1.Size = new Size(31, 28);
             label1.TabIndex = 21;
             label1.Text = "ID";
             // 
@@ -76,43 +73,39 @@
             // 
             txtID.Enabled = false;
             txtID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtID.Location = new Point(468, 326);
-            txtID.Margin = new Padding(5, 5, 5, 5);
+            txtID.Location = new Point(288, 204);
             txtID.Name = "txtID";
             txtID.ReadOnly = true;
-            txtID.Size = new Size(201, 50);
+            txtID.Size = new Size(125, 34);
             txtID.TabIndex = 22;
             // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtName.ForeColor = SystemColors.ActiveCaptionText;
-            txtName.Location = new Point(468, 408);
-            txtName.Margin = new Padding(5, 5, 5, 5);
+            txtName.Location = new Point(288, 255);
             txtName.MaxLength = 255;
             txtName.Name = "txtName";
-            txtName.Size = new Size(748, 50);
+            txtName.Size = new Size(462, 34);
             txtName.TabIndex = 24;
-            txtName.Tag = "Supplier name";
+            txtName.Tag = "Supplier Name";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(354, 413);
-            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Location = new Point(218, 258);
             label2.Name = "label2";
-            label2.Size = new Size(105, 45);
+            label2.Size = new Size(64, 28);
             label2.TabIndex = 23;
             label2.Text = "Name";
             // 
             // btnConfirm
             // 
             btnConfirm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnConfirm.Location = new Point(1056, 506);
-            btnConfirm.Margin = new Padding(5, 5, 5, 5);
+            btnConfirm.Location = new Point(650, 316);
             btnConfirm.Name = "btnConfirm";
-            btnConfirm.Size = new Size(162, 64);
+            btnConfirm.Size = new Size(100, 40);
             btnConfirm.TabIndex = 25;
             btnConfirm.Text = "Confirm";
             btnConfirm.UseVisualStyleBackColor = true;
@@ -121,10 +114,9 @@
             // btnCancel
             // 
             btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancel.Location = new Point(884, 506);
-            btnCancel.Margin = new Padding(5, 5, 5, 5);
+            btnCancel.Location = new Point(544, 316);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(162, 64);
+            btnCancel.Size = new Size(100, 40);
             btnCancel.TabIndex = 26;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -132,10 +124,10 @@
             // 
             // frmAddModifySuppliers
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1677, 805);
+            ClientSize = new Size(1032, 503);
             Controls.Add(btnCancel);
             Controls.Add(btnConfirm);
             Controls.Add(txtName);
@@ -145,7 +137,6 @@
             Controls.Add(lblMode);
             Controls.Add(btnExitSuppliers);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(5, 5, 5, 5);
             Name = "frmAddModifySuppliers";
             Text = "frmAddModifySuppliers";
             ResumeLayout(false);

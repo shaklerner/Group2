@@ -55,6 +55,7 @@
             txtProductName.Name = "txtProductName";
             txtProductName.Size = new Size(412, 39);
             txtProductName.TabIndex = 10;
+            txtProductName.Tag = "Product name";
             // 
             // btnExit
             // 

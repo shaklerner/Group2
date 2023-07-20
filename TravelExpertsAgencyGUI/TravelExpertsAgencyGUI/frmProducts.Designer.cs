@@ -39,9 +39,10 @@
             // 
             btnExit.AutoSize = true;
             btnExit.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExit.Location = new Point(1014, 9);
+            btnExit.Location = new Point(1648, 14);
+            btnExit.Margin = new Padding(5, 0, 5, 0);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(24, 25);
+            btnExit.Size = new Size(38, 41);
             btnExit.TabIndex = 8;
             btnExit.Text = "X";
             btnExit.Click += btnExit_Click;
@@ -52,11 +53,12 @@
             btnAddProducts.FlatAppearance.BorderSize = 0;
             btnAddProducts.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
             btnAddProducts.FlatStyle = FlatStyle.Flat;
-            btnAddProducts.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddProducts.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddProducts.ForeColor = Color.White;
-            btnAddProducts.Location = new Point(21, 12);
+            btnAddProducts.Location = new Point(34, 19);
+            btnAddProducts.Margin = new Padding(5);
             btnAddProducts.Name = "btnAddProducts";
-            btnAddProducts.Size = new Size(136, 47);
+            btnAddProducts.Size = new Size(221, 75);
             btnAddProducts.TabIndex = 9;
             btnAddProducts.Text = "&Add ";
             btnAddProducts.UseVisualStyleBackColor = false;
@@ -68,36 +70,41 @@
             btnEditProducts.FlatAppearance.BorderSize = 0;
             btnEditProducts.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
             btnEditProducts.FlatStyle = FlatStyle.Flat;
-            btnEditProducts.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEditProducts.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnEditProducts.ForeColor = Color.White;
-            btnEditProducts.Location = new Point(180, 12);
+            btnEditProducts.Location = new Point(292, 19);
+            btnEditProducts.Margin = new Padding(5);
             btnEditProducts.Name = "btnEditProducts";
-            btnEditProducts.Size = new Size(136, 47);
+            btnEditProducts.Size = new Size(221, 75);
             btnEditProducts.TabIndex = 10;
             btnEditProducts.Text = "&Edit";
             btnEditProducts.UseVisualStyleBackColor = false;
+            btnEditProducts.Click += btnEditProducts_Click;
             // 
             // dgvProducts
             // 
+            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProducts.BackgroundColor = Color.WhiteSmoke;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Location = new Point(23, 93);
+            dgvProducts.Location = new Point(37, 149);
+            dgvProducts.Margin = new Padding(5);
             dgvProducts.Name = "dgvProducts";
             dgvProducts.RowHeadersWidth = 51;
             dgvProducts.RowTemplate.Height = 29;
-            dgvProducts.Size = new Size(1002, 433);
+            dgvProducts.Size = new Size(1628, 693);
             dgvProducts.TabIndex = 11;
             // 
             // frmProducts
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1050, 550);
+            ClientSize = new Size(1706, 880);
             Controls.Add(dgvProducts);
             Controls.Add(btnEditProducts);
             Controls.Add(btnAddProducts);
             Controls.Add(btnExit);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5);
             Name = "frmProducts";
             Text = "frmProducts";
             Load += frmProducts_Load;

@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             btnExit = new Label();
-            btnEditProdSup = new Button();
-            btnAddProdSup = new Button();
+            btnCancelProdSup = new Button();
             btnSaveProdSup = new Button();
             cboProduct = new ComboBox();
             cboSupplier = new ComboBox();
@@ -51,36 +50,21 @@
             btnExit.Text = "X";
             btnExit.Click += btnExit_Click;
             // 
-            // btnEditProdSup
+            // btnCancelProdSup
             // 
-            btnEditProdSup.BackColor = Color.FromArgb(51, 73, 107);
-            btnEditProdSup.FlatAppearance.BorderSize = 0;
-            btnEditProdSup.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
-            btnEditProdSup.FlatStyle = FlatStyle.Flat;
-            btnEditProdSup.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEditProdSup.ForeColor = Color.White;
-            btnEditProdSup.Location = new Point(182, 12);
-            btnEditProdSup.Name = "btnEditProdSup";
-            btnEditProdSup.Size = new Size(136, 47);
-            btnEditProdSup.TabIndex = 22;
-            btnEditProdSup.Text = "&Edit";
-            btnEditProdSup.UseVisualStyleBackColor = false;
-            // 
-            // btnAddProdSup
-            // 
-            btnAddProdSup.BackColor = Color.FromArgb(51, 73, 107);
-            btnAddProdSup.FlatAppearance.BorderSize = 0;
-            btnAddProdSup.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
-            btnAddProdSup.FlatStyle = FlatStyle.Flat;
-            btnAddProdSup.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddProdSup.ForeColor = Color.White;
-            btnAddProdSup.Location = new Point(27, 12);
-            btnAddProdSup.Name = "btnAddProdSup";
-            btnAddProdSup.Size = new Size(136, 47);
-            btnAddProdSup.TabIndex = 21;
-            btnAddProdSup.Text = "&Add ";
-            btnAddProdSup.UseVisualStyleBackColor = false;
-            
+            btnCancelProdSup.BackColor = Color.FromArgb(51, 73, 107);
+            btnCancelProdSup.FlatAppearance.BorderSize = 0;
+            btnCancelProdSup.FlatAppearance.MouseOverBackColor = Color.FromArgb(143, 145, 153);
+            btnCancelProdSup.FlatStyle = FlatStyle.Flat;
+            btnCancelProdSup.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelProdSup.ForeColor = Color.White;
+            btnCancelProdSup.Location = new Point(415, 274);
+            btnCancelProdSup.Name = "btnCancelProdSup";
+            btnCancelProdSup.Size = new Size(136, 47);
+            btnCancelProdSup.TabIndex = 22;
+            btnCancelProdSup.Text = "&Cancel";
+            btnCancelProdSup.UseVisualStyleBackColor = false;
+            btnCancelProdSup.Click += btnCancelProdSup_Click;
             // 
             // btnSaveProdSup
             // 
@@ -90,7 +74,7 @@
             btnSaveProdSup.FlatStyle = FlatStyle.Flat;
             btnSaveProdSup.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSaveProdSup.ForeColor = Color.White;
-            btnSaveProdSup.Location = new Point(351, 12);
+            btnSaveProdSup.Location = new Point(250, 274);
             btnSaveProdSup.Name = "btnSaveProdSup";
             btnSaveProdSup.Size = new Size(136, 47);
             btnSaveProdSup.TabIndex = 24;
@@ -165,8 +149,7 @@
             Controls.Add(cboProduct);
             Controls.Add(btnSaveProdSup);
             Controls.Add(btnExit);
-            Controls.Add(btnEditProdSup);
-            Controls.Add(btnAddProdSup);
+            Controls.Add(btnCancelProdSup);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmAddModifyProdSuppliers";
             Text = "frmAddModifyProdSuppliers";
@@ -177,8 +160,7 @@
         #endregion
 
         private Label btnExit;
-        private Button btnEditProdSup;
-        private Button btnAddProdSup;
+        private Button btnCancelProdSup;
         private Button btnSaveProdSup;
         private ComboBox cboProduct;
         private ComboBox cboSupplier;

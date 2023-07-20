@@ -83,17 +83,17 @@ namespace TravelExpertsAgencyGUI
                 {
                     // Show the ProdSupplierId label and display the selected ProductSupplier ID in the txtProdSupId
                     lblProdSupId.Visible = true;
-                    txtProductSupId.Visible= true;
+                    txtProductSupId.Visible = true;
                     txtProductSupId.Text = productSupplier.ProductSupplierId.ToString();
 
                     // Disable the txtProductSupId textbox and cboProduct comboBox in "Edit" mode
                     txtProductSupId.Enabled = false;
-                    cboProduct.Enabled = false;
+                    cboProduct.Enabled = true;
 
                     // Display the selected product name in the cboProduct
                     cboProduct.Text = productSupplier.Product?.ProdName;
                     cboProduct.DropDownStyle = ComboBoxStyle.DropDown;
-                    
+
 
 
                     // Set the selected value for cboProducts and cboSuppliers
@@ -130,7 +130,7 @@ namespace TravelExpertsAgencyGUI
                         MessageBox.Show("Product Supplier Updated Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Close the form and return to frmProdSuppliers
-                        Actions.Actions.openFormInPanel(this.ParentForm, new frmProdSuppliers());                 
+                        Actions.Actions.openFormInPanel(this.ParentForm, new frmProdSuppliers());
                     }
                     else
                     {
@@ -160,10 +160,16 @@ namespace TravelExpertsAgencyGUI
 
                     // Close the form and return to frmProdSuppliers
                     Actions.Actions.openFormInPanel(this.ParentForm, new frmProdSuppliers());
-              
+
 
                 }
             }
+        }
+
+        private void btnCancelProdSup_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmProdSuppliers());
         }
     }
 }

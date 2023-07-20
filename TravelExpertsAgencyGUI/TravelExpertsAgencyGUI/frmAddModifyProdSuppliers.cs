@@ -12,9 +12,11 @@ using TravelExpertsAgencyGUI.Models;
 
 namespace TravelExpertsAgencyGUI
 {
-    /*
-     *when : july 2023
-     *Author : Kiranpal Kaur
+    /* agents can select a product and supplier from ComboBoxes to add a new relationship.
+     * agents can modify the supplier of Product and updates the selected relationship in the database.
+     * in the modify state the ProductId and Proucts are disabled. 
+     * when : july 2023
+     * Author : Kiranpal Kaur
      */
     public partial class frmAddModifyProdSuppliers : Form
     {
@@ -36,6 +38,10 @@ namespace TravelExpertsAgencyGUI
 
             // Disable the txtProductSupId textbox in both "Add" and "Edit" modes
             txtProductSupId.Enabled = false;
+
+            // Clear any previous selection (optional, as they are already empty)
+            cboProduct.SelectedIndex = -1;
+            cboSupplier.SelectedIndex = -1;
         }
 
         // Constructor for modification mode
@@ -174,7 +180,7 @@ namespace TravelExpertsAgencyGUI
                 }
             }
         }
-
+        //terminate the current form
         private void btnCancelProdSup_Click(object sender, EventArgs e)
         {
             this.Close();

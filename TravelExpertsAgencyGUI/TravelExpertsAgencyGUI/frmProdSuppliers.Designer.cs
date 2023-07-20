@@ -66,6 +66,7 @@
             btnAddProdSup.Text = "&Add ";
             btnAddProdSup.UseVisualStyleBackColor = false;
             btnAddProdSup.Click += btnAddProdSup_Click;
+            btnAddProdSup.MouseHover += btnAddProdSup_Click;
             // 
             // dgvProdSup
             // 

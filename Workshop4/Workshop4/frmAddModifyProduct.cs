@@ -37,9 +37,9 @@ namespace Workshop4
             {
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
-                    cmbSuppliers.DataSource = db.Suppliers.ToList();
-                    cmbSuppliers.DisplayMember = "SupName";
-                    cmbSuppliers.ValueMember = "SupplierId";
+                    cmbSuppliers.DataSource     = db.Suppliers.ToList();
+                    cmbSuppliers.DisplayMember  = "SupName";
+                    cmbSuppliers.ValueMember    = "SupplierId";
                 }
             }
             catch (Exception ex)

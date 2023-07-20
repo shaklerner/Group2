@@ -33,5 +33,12 @@ namespace Workshop4.Models
         public virtual ICollection<Booking> Bookings { get; set; }
         [InverseProperty("Package")]
         public virtual ICollection<PackagesProductsSupplier> PackagesProductsSuppliers { get; set; }
-    }
+
+		public override string ToString()
+		{
+			return $"{PackageId.ToString().PadRight(8)}{PkgName.PadRight(52)}{PkgStartDate?.ToString("yyyy-MM-dd").PadRight(15)}{PkgEndDate?.ToString("yyyy-MM-dd").PadRight(15)}{PkgDesc?.PadRight(52)}{PkgBasePrice.ToString("c").PadRight(12)}{PkgAgencyCommission?.ToString("c").PadRight(12)}";
+		}
+
+
+	}
 }

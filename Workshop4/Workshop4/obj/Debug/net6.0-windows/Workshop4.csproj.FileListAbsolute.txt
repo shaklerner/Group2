@@ -105,3 +105,4 @@ C:\Users\LeNi\source\repos\Workshop4\Workshop4\obj\Debug\net6.0-windows\refint\W
 C:\Users\LeNi\source\repos\Workshop4\Workshop4\obj\Debug\net6.0-windows\Workshop4.pdb
 C:\Users\LeNi\source\repos\Workshop4\Workshop4\obj\Debug\net6.0-windows\Workshop4.genruntimeconfig.cache
 C:\Users\LeNi\source\repos\Workshop4\Workshop4\obj\Debug\net6.0-windows\ref\Workshop4.dll
+C:\Users\LeNi\source\repos\Workshop4\Workshop4\obj\Debug\net6.0-windows\Workshop4.frmAddModifyPackage.resources

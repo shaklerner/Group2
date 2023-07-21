@@ -12,9 +12,15 @@ using TravelExpertsAgencyGUI.Models;
 
 namespace TravelExpertsAgencyGUI
 {
-    /*
-     *when : july 2023
-     *Author : Kiranpal Kaur
+    /* Agents can add new product-supplier relationships and modify existing ones using the selected.
+     *  Select a product and supplier from ComboBoxes (cboProducts and cboSuppliers) 
+     *  to add a new relationship.
+     *  In "Edit" mode, the form displays the selected ProductSupplierID in txtProductSupId (disabled) and 
+     *  the selected product in cboProduct (disabled).
+     *  Select a existing product-supplier relationship and updated it with new supplier
+     * ProductSupplier relationship.
+     * when : july 2023
+     * Author : Kiranpal Kaur
      */
     public partial class frmAddModifyProdSuppliers : Form
     {
@@ -48,7 +54,7 @@ namespace TravelExpertsAgencyGUI
             isEditMode = true;
 
             // Load data into the cboProducts and cboSuppliers from the database
-            //LoadComboBoxData();
+            LoadComboBoxData();
 
             // Load existing ProductSupplier data and display the selected values in the combo boxes
             LoadProductSupplierData(productSupplierId);
@@ -77,30 +83,39 @@ namespace TravelExpertsAgencyGUI
         // Load the existing ProductSupplier data and display the selected values in the combo boxes
         private void LoadProductSupplierData(int productSupplierId)
         {
-            using (var db = new TravelExpertsContext())
+            try
             {
-                var productSupplier = db.ProductsSuppliers
-           .Include(ps => ps.Product) // Include the Product navigation property
-           .FirstOrDefault(ps => ps.ProductSupplierId == productSupplierId);
-                if (productSupplier != null)
+
+                using (var db = new TravelExpertsContext())
                 {
-                    // Show the ProdSupplierId label and display the selected ProductSupplier ID in the txtProdSupId
-                    lblProdSupId.Visible = true;
-                    txtProductSupId.Visible = true;
-                    txtProductSupId.Text = productSupplier.ProductSupplierId.ToString();
+                    var productSupplier = db.ProductsSuppliers
+               .Include(ps => ps.Product) // Include the Product navigation property
+               .FirstOrDefault(ps => ps.ProductSupplierId == productSupplierId);
+                    if (productSupplier != null)
+                    {
+                        // Show the ProdSupplierId label and display the selected ProductSupplier ID in the txtProdSupId
+                        lblProdSupId.Visible = true;
+                        txtProductSupId.Visible = true;
+                        txtProductSupId.Text = productSupplier.ProductSupplierId.ToString();
 
-                    // Disable the txtProductSupId textbox and cboProduct comboBox in "Edit" mode
-                    txtProductSupId.Enabled = false;
-                    cboProduct.Enabled = false;
+                        // Disable the txtProductSupId textbox and cboProduct comboBox in "Edit" mode
+                        txtProductSupId.Enabled = false;
+                        cboProduct.Enabled = false;
 
-                    // Display the selected product name in the cboProduct
-                    cboProduct.Text = productSupplier.Product?.ProdName;
-                    cboProduct.DropDownStyle = ComboBoxStyle.DropDown;
+                        // Display the selected product name in the cboProduct
+                        cboProduct.Text = productSupplier.Product?.ProdName;
+                        cboProduct.DropDownStyle = ComboBoxStyle.DropDown;
 
-                    // Set the selected value for cboProducts and cboSuppliers
-                    cboProduct.SelectedValue = productSupplier.ProductId;
-                    cboSupplier.SelectedValue = productSupplier.SupplierId;
+                        // Set the selected value for cboProducts and cboSuppliers
+                        cboProduct.SelectedValue = productSupplier.ProductId;
+                        cboSupplier.SelectedValue = productSupplier.SupplierId;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., display an error message)
+                MessageBox.Show($"An error occurred while loading the ProductSupplier data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -113,68 +128,75 @@ namespace TravelExpertsAgencyGUI
 
         private void btnSaveProdSup_Click(object sender, EventArgs e)
         {
-            // Validate that both cboProduct and cboSupplier have valid selections
-            if (cboProduct.SelectedIndex == -1 || cboSupplier.SelectedIndex == -1)
+            try
             {
-                MessageBox.Show("Please select a valid product and supplier.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the event handler if validation fails
-            }
-
-            using (var db = new TravelExpertsContext())
-            {
-                if (isEditMode) // Editing an existing ProductSupplier
+                // Validate that both cboProduct and cboSupplier have valid selections
+                if (cboProduct.SelectedIndex == -1 || cboSupplier.SelectedIndex == -1)
                 {
-                    // Find the existing ProductSupplier by its ID
-                    var existingProductSupplier = db.ProductsSuppliers.FirstOrDefault(ps => ps.ProductSupplierId == prodSupId);
-                    if (existingProductSupplier != null)
+                    MessageBox.Show("Please select a valid product and supplier.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Exit the event handler if validation fails
+                }
+                using (var db = new TravelExpertsContext())
+                {
+                    if (isEditMode) // Editing an existing ProductSupplier
                     {
-                        // Update the existing ProductSupplier with the selected product and supplier
-                        existingProductSupplier.ProductId = Convert.ToInt32(cboProduct.SelectedValue);
-                        existingProductSupplier.SupplierId = Convert.ToInt32(cboSupplier.SelectedValue);
+                        // Find the existing ProductSupplier by its ID
+                        var existingProductSupplier = db.ProductsSuppliers.FirstOrDefault(ps => ps.ProductSupplierId == prodSupId);
+                        if (existingProductSupplier != null)
+                        {
+                            // Update the existing ProductSupplier with the selected product and supplier
+                            existingProductSupplier.ProductId = Convert.ToInt32(cboProduct.SelectedValue);
+                            existingProductSupplier.SupplierId = Convert.ToInt32(cboSupplier.SelectedValue);
+
+                            // Save the changes to the database
+                            db.SaveChanges();
+
+                            // Show a success message
+                            MessageBox.Show("Product Supplier Updated Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Close the form and return to frmProdSuppliers
+                            Actions.Actions.openFormInPanel(this.ParentForm, new frmProdSuppliers());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Product Supplier not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else // Adding a new ProductSupplier
+                    {
+                        // Create a new ProductSupplier object
+                        ProductsSupplier productSupplier = new ProductsSupplier();
+
+                        // Set the ProductId and SupplierId based on the selected items in cboProducts and cboSuppliers
+                        productSupplier.ProductId = Convert.ToInt32(cboProduct.SelectedValue);
+                        productSupplier.SupplierId = Convert.ToInt32(cboSupplier.SelectedValue);
+
+                        // Add the new ProductSupplier to the database
+                        db.ProductsSuppliers.Add(productSupplier);
 
                         // Save the changes to the database
                         db.SaveChanges();
 
-                        // Show a success message
-                        MessageBox.Show("Product Supplier Updated Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Get the generated ProductSupplierID from the added entity
+                        int generatedProductSupplierId = productSupplier.ProductSupplierId;
+
+                        // Show a success message for "Add" mode
+                        MessageBox.Show($"Product Supplier Added Successfully with ID: {generatedProductSupplierId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Close the form and return to frmProdSuppliers
                         Actions.Actions.openFormInPanel(this.ParentForm, new frmProdSuppliers());
+
                     }
-                    else
-                    {
-                        MessageBox.Show("Product Supplier not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else // Adding a new ProductSupplier
-                {
-                    // Create a new ProductSupplier object
-                    ProductsSupplier productSupplier = new ProductsSupplier();
-
-                    // Set the ProductId and SupplierId based on the selected items in cboProducts and cboSuppliers
-                    productSupplier.ProductId = Convert.ToInt32(cboProduct.SelectedValue);
-                    productSupplier.SupplierId = Convert.ToInt32(cboSupplier.SelectedValue);
-
-                    // Add the new ProductSupplier to the database
-                    db.ProductsSuppliers.Add(productSupplier);
-
-                    // Save the changes to the database
-                    db.SaveChanges();
-
-                    // Get the generated ProductSupplierID from the added entity
-                    int generatedProductSupplierId = productSupplier.ProductSupplierId;
-
-                    // Show a success message for "Add" mode
-                    MessageBox.Show($"Product Supplier Added Successfully with ID: {generatedProductSupplierId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Close the form and return to frmProdSuppliers
-                    Actions.Actions.openFormInPanel(this.ParentForm, new frmProdSuppliers());
-
-
-                }
+                }            
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., display an error message)
+                MessageBox.Show($"An error occurred while saving the ProductSupplier: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // Close the add/modify form
         private void btnCancelProdSup_Click(object sender, EventArgs e)
         {
             this.Close();

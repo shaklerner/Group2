@@ -78,9 +78,9 @@ namespace TravelExpertsAgencyGUI
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             // Validate the name before adding/editing
-            if (string.IsNullOrWhiteSpace(txtName.Text))
+            // Maximum length is set by the textbox property, so code-validation is not necessary
+            if (!Validator.IsPresent(txtName))
             {
-                MessageBox.Show("Supplier name is required!", "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return;
             }
 

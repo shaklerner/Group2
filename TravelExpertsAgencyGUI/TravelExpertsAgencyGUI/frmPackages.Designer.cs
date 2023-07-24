@@ -39,12 +39,15 @@
             // 
             dgvPackages.BackgroundColor = Color.WhiteSmoke;
             dgvPackages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPackages.Location = new Point(19, 115);
+            dgvPackages.Location = new Point(17, 86);
+            dgvPackages.Margin = new Padding(3, 2, 3, 2);
             dgvPackages.Name = "dgvPackages";
             dgvPackages.RowHeadersWidth = 51;
             dgvPackages.RowTemplate.Height = 29;
-            dgvPackages.Size = new Size(1002, 417);
+            dgvPackages.Size = new Size(877, 313);
             dgvPackages.TabIndex = 0;
+            dgvPackages.CellClick += dgvPackages_CellClick;
+            dgvPackages.CellDoubleClick += btnUpdatePackages_Click;
             // 
             // btnAddPackages
             // 
@@ -54,9 +57,10 @@
             btnAddPackages.FlatStyle = FlatStyle.Flat;
             btnAddPackages.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddPackages.ForeColor = Color.White;
-            btnAddPackages.Location = new Point(33, 39);
+            btnAddPackages.Location = new Point(29, 29);
+            btnAddPackages.Margin = new Padding(3, 2, 3, 2);
             btnAddPackages.Name = "btnAddPackages";
-            btnAddPackages.Size = new Size(218, 47);
+            btnAddPackages.Size = new Size(191, 35);
             btnAddPackages.TabIndex = 2;
             btnAddPackages.Text = "Create New ";
             btnAddPackages.UseVisualStyleBackColor = false;
@@ -70,34 +74,37 @@
             btnUpdatePackages.FlatStyle = FlatStyle.Flat;
             btnUpdatePackages.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnUpdatePackages.ForeColor = Color.White;
-            btnUpdatePackages.Location = new Point(277, 39);
+            btnUpdatePackages.Location = new Point(242, 29);
+            btnUpdatePackages.Margin = new Padding(3, 2, 3, 2);
             btnUpdatePackages.Name = "btnUpdatePackages";
-            btnUpdatePackages.Size = new Size(218, 47);
+            btnUpdatePackages.Size = new Size(191, 35);
             btnUpdatePackages.TabIndex = 3;
             btnUpdatePackages.Text = "Update Package";
             btnUpdatePackages.UseVisualStyleBackColor = false;
+            btnUpdatePackages.Click += btnUpdatePackages_Click;
             // 
             // btnExit
             // 
             btnExit.AutoSize = true;
             btnExit.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btnExit.Location = new Point(1014, 9);
+            btnExit.Location = new Point(887, 7);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(24, 25);
+            btnExit.Size = new Size(19, 20);
             btnExit.TabIndex = 7;
             btnExit.Text = "X";
             btnExit.Click += btnExit_Click;
             // 
             // frmPackages
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1050, 550);
+            ClientSize = new Size(919, 412);
             Controls.Add(btnExit);
             Controls.Add(btnUpdatePackages);
             Controls.Add(btnAddPackages);
             Controls.Add(dgvPackages);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmPackages";
             Text = "frmPackages";
             Load += frmPackages_Load;

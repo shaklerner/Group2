@@ -53,6 +53,8 @@ namespace TravelExpertsAgencyGUI
             }
         }
 
+        // This method stores the selected product from the data grid view
+        // Handles both single cell selection (id or product name cell) and whole row selection
         public void getSelectedProduct()
         {
             if (dgvProducts.SelectedRows.Count >= 0 || dgvProducts.SelectedCells.Count >= 0)
@@ -92,12 +94,13 @@ namespace TravelExpertsAgencyGUI
             Actions.Actions.openFormInPanel(this.ParentForm, addForm);
         }
 
+        // Passes selected product to Add/Modify form and opens it
         private void btnEditProducts_Click(object sender, EventArgs e)
         {
             frmAddModifyProducts editForm = new frmAddModifyProducts();
             editForm.isAdd = false;
-            getSelectedProduct();
-            editForm.product = currentProduct;
+            getSelectedProduct(); // get selected product
+            editForm.product = currentProduct; // pass selected product to second form
             Actions.Actions.openFormInPanel(this.ParentForm, editForm);
         }
     }

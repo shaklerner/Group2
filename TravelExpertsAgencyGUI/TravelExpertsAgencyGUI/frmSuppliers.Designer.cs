@@ -64,24 +64,28 @@
             // 
             // btnEditSupplier
             // 
+            btnEditSupplier.BackColor = Color.FromArgb(51, 73, 107);
             btnEditSupplier.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEditSupplier.Location = new Point(388, 446);
+            btnEditSupplier.ForeColor = Color.White;
+            btnEditSupplier.Location = new Point(368, 446);
             btnEditSupplier.Name = "btnEditSupplier";
-            btnEditSupplier.Size = new Size(100, 40);
+            btnEditSupplier.Size = new Size(120, 55);
             btnEditSupplier.TabIndex = 19;
             btnEditSupplier.Text = "Edit";
-            btnEditSupplier.UseVisualStyleBackColor = true;
+            btnEditSupplier.UseVisualStyleBackColor = false;
             btnEditSupplier.Click += btnEditSupplier_Click;
             // 
             // btnAddProduct
             // 
+            btnAddProduct.BackColor = Color.FromArgb(51, 73, 107);
             btnAddProduct.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddProduct.Location = new Point(282, 446);
+            btnAddProduct.ForeColor = Color.White;
+            btnAddProduct.Location = new Point(242, 446);
             btnAddProduct.Name = "btnAddProduct";
-            btnAddProduct.Size = new Size(100, 40);
+            btnAddProduct.Size = new Size(120, 55);
             btnAddProduct.TabIndex = 18;
             btnAddProduct.Text = "Add";
-            btnAddProduct.UseVisualStyleBackColor = true;
+            btnAddProduct.UseVisualStyleBackColor = false;
             btnAddProduct.Click += btnAddProduct_Click;
             // 
             // label1
@@ -96,14 +100,13 @@
             // 
             // dgvSuppliers
             // 
-            dgvSuppliers.BackgroundColor = SystemColors.Control;
+            dgvSuppliers.BackgroundColor = Color.WhiteSmoke;
             dgvSuppliers.BorderStyle = BorderStyle.None;
             dgvSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSuppliers.Columns.AddRange(new DataGridViewColumn[] { ID, SupplierName });
             dgvSuppliers.Location = new Point(45, 128);
             dgvSuppliers.MultiSelect = false;
             dgvSuppliers.Name = "dgvSuppliers";
-            dgvSuppliers.RowHeadersVisible = false;
             dgvSuppliers.RowHeadersWidth = 51;
             dgvSuppliers.RowTemplate.Height = 29;
             dgvSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -139,13 +142,15 @@
             // 
             // btnGoProductsSuppliers
             // 
+            btnGoProductsSuppliers.BackColor = Color.FromArgb(51, 73, 107);
             btnGoProductsSuppliers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnGoProductsSuppliers.Location = new Point(870, 446);
+            btnGoProductsSuppliers.ForeColor = Color.White;
+            btnGoProductsSuppliers.Location = new Point(859, 446);
             btnGoProductsSuppliers.Name = "btnGoProductsSuppliers";
-            btnGoProductsSuppliers.Size = new Size(124, 40);
+            btnGoProductsSuppliers.Size = new Size(135, 55);
             btnGoProductsSuppliers.TabIndex = 23;
             btnGoProductsSuppliers.Text = "More Info";
-            btnGoProductsSuppliers.UseVisualStyleBackColor = true;
+            btnGoProductsSuppliers.UseVisualStyleBackColor = false;
             btnGoProductsSuppliers.Click += btnGoProductsSuppliers_Click;
             // 
             // frmSuppliers

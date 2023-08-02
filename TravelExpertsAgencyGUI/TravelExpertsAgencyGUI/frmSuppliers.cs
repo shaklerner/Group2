@@ -49,6 +49,16 @@ namespace TravelExpertsAgencyGUI
                     .OrderBy(s => s.SupName)
                     .ToList();
 
+                // Visual styles for the headers and cells
+                dgvSuppliers.EnableHeadersVisualStyles = false;
+                dgvSuppliers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(51, 73, 107);
+                dgvSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvSuppliers.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(51, 73, 107);
+                dgvSuppliers.RowHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvSuppliers.DefaultCellStyle.BackColor = Color.White;
+                dgvSuppliers.DefaultCellStyle.ForeColor = Color.Black;
+                dgvSuppliers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(225, 225, 225);
+
                 // Use these fields for each column, column titles are configured in design mode
                 dgvSuppliers.Columns[0].DataPropertyName = "SupplierId";
                 dgvSuppliers.Columns[1].DataPropertyName = "SupName";
@@ -141,7 +151,7 @@ namespace TravelExpertsAgencyGUI
         {
             frmProdSuppliers prodSupForm = new();
 
-            openFormInPanel(this.ParentForm, prodSupForm );
+            openFormInPanel(this.ParentForm, prodSupForm);
         }
 
         // The "Add" button, open a form to add a new supplier

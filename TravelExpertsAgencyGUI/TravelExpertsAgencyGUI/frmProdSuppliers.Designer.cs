@@ -76,6 +76,7 @@
             dgvProdSup.Name = "dgvProdSup";
             dgvProdSup.RowHeadersWidth = 51;
             dgvProdSup.RowTemplate.Height = 29;
+            dgvProdSup.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProdSup.Size = new Size(992, 379);
             dgvProdSup.TabIndex = 19;
             // 

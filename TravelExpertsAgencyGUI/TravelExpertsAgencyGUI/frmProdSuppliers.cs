@@ -92,10 +92,10 @@ namespace TravelExpertsAgencyGUI
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Handle the exception (e.g., display an error message)
-                MessageBox.Show($"An error occurred while refreshing the DataGridView: {ex.Message}", 
+                MessageBox.Show($"An error occurred while refreshing the DataGridView: {ex.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

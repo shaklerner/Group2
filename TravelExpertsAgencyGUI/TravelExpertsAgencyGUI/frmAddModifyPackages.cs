@@ -52,8 +52,8 @@ namespace TravelExpertsAgencyGUI
                 MessageBox.Show("Error while loading suppliers and products: " +
                     ex.Message, ex.GetType().ToString());
             }
-            
-            if (!isAdd) 
+
+            if (!isAdd)
             {
                 DisplayPackage();
                 btnOkPackage.Text = "Update";
@@ -62,7 +62,12 @@ namespace TravelExpertsAgencyGUI
 
         private void btnOkPackage_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(txtPackageName.Text) && !String.IsNullOrWhiteSpace(txtDesc.Text)) // validator placeholder
+            
+            if(Validator.IsPresent(txtPackageName) &&
+                Validator.IsPresent(txtDesc) &&
+                Validator.IsValidEndDate(dtpPackageStartDate, dtpPackageEndDate) &&
+                Validator.isValidCommissionValue(txtPackageBasePrice, txtAgencyCommission)
+                )           
             {
                 if (isAdd)
                 {
@@ -71,24 +76,24 @@ namespace TravelExpertsAgencyGUI
 
                 if (package != null)
                 {
-                        package.PkgName = txtPackageName.Text;
-                        package.PkgStartDate = dtpPackageStartDate.Value;
-                        package.PkgEndDate = dtpPackageEndDate.Value;
-                        package.PkgDesc = txtDesc.Text;
-                        package.PkgBasePrice = Convert.ToDecimal(txtPackageBasePrice.Text);
-                        package.PkgAgencyCommission = Convert.ToDecimal(txtAgencyCommission.Text);
+                    package.PkgName = txtPackageName.Text;
+                    package.PkgStartDate = dtpPackageStartDate.Value;
+                    package.PkgEndDate = dtpPackageEndDate.Value;
+                    package.PkgDesc = txtDesc.Text;
+                    package.PkgBasePrice = Convert.ToDecimal(txtPackageBasePrice.Text);
+                    package.PkgAgencyCommission = Convert.ToDecimal(txtAgencyCommission.Text);
 
-                        selectedProduct = (int)cboProd.SelectedValue;
-                        selectedSupplier = (int)cboSupp.SelectedValue;
+                    selectedProduct = (int)cboProd.SelectedValue;
+                    selectedSupplier = (int)cboSupp.SelectedValue;
 
-                        this.DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.OK;
                 }
 
-            CallDB();
+                CallDB();
 
-            this.Close();
+                this.Close();
 
-            Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmPackages());
+                Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmPackages());
 
             }
         }
@@ -113,11 +118,11 @@ namespace TravelExpertsAgencyGUI
                         db.SaveChanges();
                         #endregion
                         #region add item to the package_product_supplier
-                            PackagesProductsSupplier packagesProductsSupplier = new PackagesProductsSupplier();
-                            packagesProductsSupplier.PackageId = package.PackageId;
-                            packagesProductsSupplier.ProductSupplierId = productsSupplier.ProductSupplierId;
-                            db.PackagesProductsSuppliers.Add(packagesProductsSupplier);
-                            db.SaveChanges();
+                        PackagesProductsSupplier packagesProductsSupplier = new PackagesProductsSupplier();
+                        packagesProductsSupplier.PackageId = package.PackageId;
+                        packagesProductsSupplier.ProductSupplierId = productsSupplier.ProductSupplierId;
+                        db.PackagesProductsSuppliers.Add(packagesProductsSupplier);
+                        db.SaveChanges();
                         #endregion
                     }
 
@@ -171,12 +176,12 @@ namespace TravelExpertsAgencyGUI
                     var packagesProductsSupplier = db.PackagesProductsSuppliers
                         .FirstOrDefault(p => p.PackageId == packageId);
 
-                    var productSupplier = db.ProductsSuppliers.FirstOrDefault(p=>p.ProductSupplierId== packagesProductsSupplier.ProductSupplierId);
-                    
+                    var productSupplier = db.ProductsSuppliers.FirstOrDefault(p => p.ProductSupplierId == packagesProductsSupplier.ProductSupplierId);
+
                     if (productSupplier != null)
                     {
                         selectedSupplier = productSupplier.SupplierId;
-                        selectedProduct  = productSupplier.ProductId;
+                        selectedProduct = productSupplier.ProductId;
                     }
                 }
             }
@@ -191,13 +196,13 @@ namespace TravelExpertsAgencyGUI
         {
             if (package != null)
             {
-                txtPackageName.Text         = package.PackageId.ToString();
-                txtPackageName.Text         = package.PkgName;
-                txtPackageBasePrice.Text    = package.PkgBasePrice.ToString();
-                txtDesc.Text                = package.PkgDesc;
-                txtAgencyCommission.Text    = package.PkgAgencyCommission.ToString();
-                dtpPackageStartDate.Value   = Convert.ToDateTime(package.PkgStartDate);
-                dtpPackageEndDate.Value     = Convert.ToDateTime(package.PkgEndDate);
+                txtPackageName.Text = package.PackageId.ToString();
+                txtPackageName.Text = package.PkgName;
+                txtPackageBasePrice.Text = package.PkgBasePrice.ToString();
+                txtDesc.Text = package.PkgDesc;
+                txtAgencyCommission.Text = package.PkgAgencyCommission.ToString();
+                dtpPackageStartDate.Value = Convert.ToDateTime(package.PkgStartDate);
+                dtpPackageEndDate.Value = Convert.ToDateTime(package.PkgEndDate);
                 // Call the method to retrieve SupplierId and ProductId based on PackageId
                 GetSupplierAndProductIds(package.PackageId);
 

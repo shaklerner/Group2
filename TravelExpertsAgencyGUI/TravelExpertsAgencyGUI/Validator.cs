@@ -24,6 +24,25 @@ namespace TravelExpertsAgencyGUI
             }
             return isValid;
         }
+        /// <summary>
+        /// Checks if text box contains empty string, null, or white space
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <returns>true if text is present, false if not</returns>
+        public static bool IsPresent(RichTextBox textBox)
+        {
+            bool isValid = true;
+            if (textBox.Text == "" || String.IsNullOrWhiteSpace(textBox.Text))
+            {
+                isValid = false;
+                MessageBox.Show(textBox.Tag + " is required.");
+                textBox.Focus();
+            }
+            return isValid;
+        }
+
+
+
 
         /// <summary>
         /// Checks whether the text field exceeds allowed character length in database
@@ -90,7 +109,7 @@ namespace TravelExpertsAgencyGUI
                 isValid = false;
                 MessageBox.Show(endDate.Tag + " must be after " + startDate.Tag);
             }
-            return !isValid;
+            return isValid;
         }
 
         /// <summary>
@@ -152,12 +171,21 @@ namespace TravelExpertsAgencyGUI
         /// <returns>true if base price is greater than commission, false if not</returns>
         public static bool isValidCommissionValue(TextBox basePrice, TextBox commission)
         {
-            bool isValid = true;
-            if(Convert.ToDecimal(commission.Text) > Convert.ToDecimal(basePrice))
+            bool isValid = false;
+            decimal commresult;
+            decimal result;
+            decimal.TryParse(commission.Text, out commresult);
+            decimal.TryParse(basePrice.Text, out result);
+            if ((commresult <= result) && decimal.TryParse(commission.Text, out commresult) && decimal.TryParse(basePrice.Text, out result))
             {
-                isValid |= false;
+                isValid = true;
+                
+            }
+            else
+            {
                 MessageBox.Show("Commission cannot be greater than base price.");
             }
+            
             return isValid;
         }
 

@@ -56,7 +56,13 @@ namespace TravelExpertsAgencyGUI
             DisplayProduct();
             if (!isAdd)
             {
+                txtProductId.ReadOnly = true;
                 btnAddProducts.Text = "Update";
+            }
+            else if (isAdd)
+            {
+                label3.Visible = false;
+                txtProductId.Visible = false;
             }
         }
 

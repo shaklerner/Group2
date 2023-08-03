@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,11 +12,9 @@ using TravelExpertsAgencyGUI.Models;
 
 namespace TravelExpertsAgencyGUI
 {
+    public readonly record struct DGVItem(int ID, string Product, string Supplier);
     public partial class frmAddModifyPackages : Form
     {
-
-        private List<Supplier> suppliersList;
-        private List<Product> productsList;
         public frmAddModifyPackages()
         {
             InitializeComponent();
@@ -24,8 +23,6 @@ namespace TravelExpertsAgencyGUI
         private bool isadd = false;
         public bool isAdd { get; set; }
         public Package? package;
-        public int? selectedSupplier;
-        public int? selectedProduct;
 
         private void frmAddModifyPackages_Load(object sender, EventArgs e)
         {
@@ -34,16 +31,19 @@ namespace TravelExpertsAgencyGUI
             {
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
-                    suppliersList = db.Suppliers.ToList();
-                    cboSupp.DataSource = suppliersList;
-                    cboSupp.DisplayMember = "SupName";
-                    cboSupp.ValueMember = "SupplierId";
+                    dgvProductSuppliers.AutoGenerateColumns = false;
+                    dgvProductSuppliers.DataSource = db
+                        .ProductsSuppliers
+                        .Include(ps => ps.Product)
+                        .Include(ps => ps.Supplier)
+                        .OrderBy(ps => ps.Product!.ProdName)
+                        .ThenBy(ps => ps.Supplier)
+                        .Select(ps => new DGVItem(ps.ProductSupplierId, ps.Product!.ProdName, ps.Supplier!.SupName))
+                        .ToList();
 
-                    productsList = db.Products.ToList();
-
-                    cboProd.DataSource = productsList;
-                    cboProd.DisplayMember = "ProdName";
-                    cboProd.ValueMember = "ProductId";
+                    dgvProductSuppliers.Columns[0].DataPropertyName = "Product";
+                    dgvProductSuppliers.Columns[1].DataPropertyName = "Supplier";
+                    dgvProductSuppliers.EnableHeadersVisualStyles = false; 
                 }
 
             }
@@ -84,9 +84,6 @@ namespace TravelExpertsAgencyGUI
                     package.PkgBasePrice = Convert.ToDecimal(txtPackageBasePrice.Text);
                     package.PkgAgencyCommission = Convert.ToDecimal(txtAgencyCommission.Text);
 
-                    selectedProduct = (int)cboProd.SelectedValue;
-                    selectedSupplier = (int)cboSupp.SelectedValue;
-
                     this.DialogResult = DialogResult.OK;
                 }
 
@@ -107,41 +104,56 @@ namespace TravelExpertsAgencyGUI
                 {
                     if (isAdd && package != null) //if this is a new productsSupplier item
                     {
-                        #region Add item to the productsSupplier
-                        ProductsSupplier productsSupplier = new ProductsSupplier();
-                        productsSupplier.ProductId = selectedProduct;
-                        productsSupplier.SupplierId = selectedSupplier;
-                        db.ProductsSuppliers.Add(productsSupplier);
-                        db.SaveChanges();
-                        #endregion
                         #region add item to the Package table
                         db.Packages.Add(package);
                         db.SaveChanges();
                         #endregion
                         #region add item to the package_product_supplier
-                        PackagesProductsSupplier packagesProductsSupplier = new PackagesProductsSupplier();
-                        packagesProductsSupplier.PackageId = package.PackageId;
-                        packagesProductsSupplier.ProductSupplierId = productsSupplier.ProductSupplierId;
-                        db.PackagesProductsSuppliers.Add(packagesProductsSupplier);
+                        foreach (DataGridViewRow row in dgvProductSuppliers.SelectedRows)
+                        {
+                            PackagesProductsSupplier packagesProductsSupplier = new PackagesProductsSupplier();
+                            packagesProductsSupplier.PackageId = package.PackageId;
+                            packagesProductsSupplier.ProductSupplierId = ((DGVItem)row.DataBoundItem).ID;
+                            db.PackagesProductsSuppliers.Add(packagesProductsSupplier);
+                        }
                         db.SaveChanges();
                         #endregion
                     }
 
                     else if (!isAdd && package != null)
                     {
-                        db.Packages.Find(package.PackageId = frmPackages.cellSelectedPackageId);
-                        DisplayPackage();
+                        Package dbPackage = db.Packages.Find(package.PackageId)!;
+                        //DisplayPackage();
 
                         var confirmEdit = MessageBox.Show("Are you sure you want to edit package?",
                                                             "Confirm", MessageBoxButtons.YesNo);
                         if (confirmEdit == DialogResult.Yes)
                         {
-                            db.Packages.Find(package.PackageId = frmPackages.cellSelectedPackageId).PkgName = txtPackageName.Text;
-                            db.Packages.Find(package.PackageId = frmPackages.cellSelectedPackageId).PkgDesc = txtDesc.Text;
-                            db.Packages.Find(package.PackageId = frmPackages.cellSelectedPackageId).PkgStartDate = dtpPackageStartDate.Value;
-                            db.Packages.Find(package.PackageId = frmPackages.cellSelectedPackageId).PkgEndDate = dtpPackageEndDate.Value;
-                            db.Packages.Find(package.PackageId = frmPackages.cellSelectedPackageId).PkgBasePrice = Convert.ToDecimal(txtPackageBasePrice.Text);
-                            db.Packages.Find(package.PackageId = frmPackages.cellSelectedPackageId).PkgAgencyCommission = Convert.ToDecimal(txtAgencyCommission.Text);
+                            db.Packages.Find(package.PackageId).PkgName = txtPackageName.Text;
+                            db.Packages.Find(package.PackageId).PkgDesc = txtDesc.Text;
+                            db.Packages.Find(package.PackageId).PkgStartDate = dtpPackageStartDate.Value;
+                            db.Packages.Find(package.PackageId).PkgEndDate = dtpPackageEndDate.Value;
+                            db.Packages.Find(package.PackageId).PkgBasePrice = Convert.ToDecimal(txtPackageBasePrice.Text);
+                            db.Packages.Find(package.PackageId).PkgAgencyCommission = Convert.ToDecimal(txtAgencyCommission.Text);
+
+                            List<int> pkgProductSuppliers = new TravelExpertsContext()
+                                .PackagesProductsSuppliers
+                                .Where(pps => pps.PackageId == package.PackageId)
+                                .Select(pps => pps.ProductSupplierId)
+                                .ToList();
+
+                            foreach (DataGridViewRow row in dgvProductSuppliers.SelectedRows)
+                            {
+                                PackagesProductsSupplier packagesProductsSupplier = new PackagesProductsSupplier();
+                                packagesProductsSupplier.PackageId = package.PackageId;
+                                if (pkgProductSuppliers.Contains(((DGVItem)row.DataBoundItem).ID))
+                                {
+                                    continue;
+                                }
+                                packagesProductsSupplier.ProductSupplierId = ((DGVItem)row.DataBoundItem).ID;
+                                db.PackagesProductsSuppliers.Add(packagesProductsSupplier);
+                            }
+
                             db.SaveChanges();
                             this.Close();
                             Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmPackages());
@@ -167,32 +179,6 @@ namespace TravelExpertsAgencyGUI
             Actions.Actions.openFormInPanel(frmMainForm.ActiveForm, new frmPackages());
         }
 
-
-        private void GetSupplierAndProductIds(int packageId)
-        {
-            try
-            {
-                using (TravelExpertsContext db = new TravelExpertsContext())
-                {
-                    var packagesProductsSupplier = db.PackagesProductsSuppliers
-                        .FirstOrDefault(p => p.PackageId == packageId);
-
-                    var productSupplier = db.ProductsSuppliers.FirstOrDefault(p => p.ProductSupplierId == packagesProductsSupplier.ProductSupplierId);
-
-                    if (productSupplier != null)
-                    {
-                        selectedSupplier = productSupplier.SupplierId;
-                        selectedProduct = productSupplier.ProductId;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error while retrieving SupplierId and ProductId: " +
-                    ex.Message, ex.GetType().ToString());
-            }
-        }
-
         private void DisplayPackage()
         {
             if (package != null)
@@ -205,16 +191,23 @@ namespace TravelExpertsAgencyGUI
                 dtpPackageStartDate.Value = Convert.ToDateTime(package.PkgStartDate);
                 dtpPackageEndDate.Value = Convert.ToDateTime(package.PkgEndDate);
                 // Call the method to retrieve SupplierId and ProductId based on PackageId
-                GetSupplierAndProductIds(package.PackageId);
 
-                // Set the selected value for ComboBox controls based on selectedSupplier and selectedProduct
-                cboSupp.DataSource = suppliersList;
-                cboSupp.SelectedValue = selectedSupplier;
-                cboProd.DataSource = productsList;
-                cboProd.SelectedValue = selectedProduct;
-                //deactive ComboBoxes
-                cboProd.Enabled = false;
-                cboSupp.Enabled = false;
+                List<int> pkgProductSuppliers = new TravelExpertsContext()
+                    .PackagesProductsSuppliers
+                    .Where(pps => pps.PackageId == package.PackageId)
+                    .Select(pps => pps.ProductSupplierId)
+                    .ToList();
+
+                dgvProductSuppliers.ClearSelection();
+                foreach (DataGridViewRow row in dgvProductSuppliers.Rows)
+                {
+                    if (pkgProductSuppliers.Contains(((DGVItem)row.DataBoundItem).ID))
+                    {
+                        row.Selected = true;
+                        row.DefaultCellStyle.BackColor = SystemColors.Highlight;
+                    }
+                }
+                dgvProductSuppliers.Invalidate();
             }
         }
     }

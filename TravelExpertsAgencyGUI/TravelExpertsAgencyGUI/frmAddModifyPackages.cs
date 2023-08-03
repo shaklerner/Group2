@@ -31,9 +31,27 @@ namespace TravelExpertsAgencyGUI
             {
                 using (TravelExpertsContext db = new TravelExpertsContext())
                 {
+                    int pid = package?.PackageId ?? 0;
+                    List<int> toFilter = db
+                        .PackagesProductsSuppliers
+                        .Where(pps => pps.PackageId == pid)
+                        .Select(pps => pps.ProductSupplierId)
+                        .ToList();
+
                     dgvProductSuppliers.AutoGenerateColumns = false;
+                    dgvExistingProductSuppliers.AutoGenerateColumns = false;
                     dgvProductSuppliers.DataSource = db
                         .ProductsSuppliers
+                        .Where(ps => !toFilter.Contains(ps.ProductSupplierId))
+                        .Include(ps => ps.Product)
+                        .Include(ps => ps.Supplier)
+                        .OrderBy(ps => ps.Product!.ProdName)
+                        .ThenBy(ps => ps.Supplier)
+                        .Select(ps => new DGVItem(ps.ProductSupplierId, ps.Product!.ProdName, ps.Supplier!.SupName))
+                        .ToList();
+                    dgvExistingProductSuppliers.DataSource = db
+                        .ProductsSuppliers
+                        .Where(ps => toFilter.Contains(ps.ProductSupplierId))
                         .Include(ps => ps.Product)
                         .Include(ps => ps.Supplier)
                         .OrderBy(ps => ps.Product!.ProdName)
@@ -43,7 +61,14 @@ namespace TravelExpertsAgencyGUI
 
                     dgvProductSuppliers.Columns[0].DataPropertyName = "Product";
                     dgvProductSuppliers.Columns[1].DataPropertyName = "Supplier";
-                    dgvProductSuppliers.EnableHeadersVisualStyles = false; 
+                    dgvProductSuppliers.EnableHeadersVisualStyles = false;
+                    dgvProductSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvProductSuppliers.AutoResizeColumns();
+                    dgvExistingProductSuppliers.Columns[0].DataPropertyName = "Product";
+                    dgvExistingProductSuppliers.Columns[1].DataPropertyName = "Supplier";
+                    dgvExistingProductSuppliers.EnableHeadersVisualStyles = false;
+                    dgvExistingProductSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvExistingProductSuppliers.AutoResizeColumns();
                 }
 
             }
@@ -57,6 +82,10 @@ namespace TravelExpertsAgencyGUI
             {
                 DisplayPackage();
                 btnOkPackage.Text = "Update";
+            }
+            else
+            {
+                dgvExistingProductSuppliers.Visible = false;
             }
         }
 
@@ -191,23 +220,6 @@ namespace TravelExpertsAgencyGUI
                 dtpPackageStartDate.Value = Convert.ToDateTime(package.PkgStartDate);
                 dtpPackageEndDate.Value = Convert.ToDateTime(package.PkgEndDate);
                 // Call the method to retrieve SupplierId and ProductId based on PackageId
-
-                List<int> pkgProductSuppliers = new TravelExpertsContext()
-                    .PackagesProductsSuppliers
-                    .Where(pps => pps.PackageId == package.PackageId)
-                    .Select(pps => pps.ProductSupplierId)
-                    .ToList();
-
-                dgvProductSuppliers.ClearSelection();
-                foreach (DataGridViewRow row in dgvProductSuppliers.Rows)
-                {
-                    if (pkgProductSuppliers.Contains(((DGVItem)row.DataBoundItem).ID))
-                    {
-                        row.Selected = true;
-                        row.DefaultCellStyle.BackColor = SystemColors.Highlight;
-                    }
-                }
-                dgvProductSuppliers.Invalidate();
             }
         }
     }

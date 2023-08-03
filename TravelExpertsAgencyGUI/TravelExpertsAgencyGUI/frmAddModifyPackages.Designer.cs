@@ -46,7 +46,11 @@
             dgvProductSuppliers = new DataGridView();
             Product = new DataGridViewTextBoxColumn();
             Supplier = new DataGridViewTextBoxColumn();
+            dgvExistingProductSuppliers = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProductSuppliers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExistingProductSuppliers).BeginInit();
             SuspendLayout();
             // 
             // btnOkPackage
@@ -57,7 +61,7 @@
             btnOkPackage.FlatStyle = FlatStyle.Flat;
             btnOkPackage.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnOkPackage.ForeColor = Color.White;
-            btnOkPackage.Location = new Point(686, 355);
+            btnOkPackage.Location = new Point(404, 368);
             btnOkPackage.Name = "btnOkPackage";
             btnOkPackage.Size = new Size(136, 47);
             btnOkPackage.TabIndex = 3;
@@ -73,7 +77,7 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Franklin Gothic Book", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(686, 437);
+            btnCancel.Location = new Point(262, 368);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(136, 47);
             btnCancel.TabIndex = 4;
@@ -85,7 +89,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(122, 80);
+            label2.Location = new Point(72, 80);
             label2.Name = "label2";
             label2.Size = new Size(103, 25);
             label2.TabIndex = 8;
@@ -95,7 +99,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(133, 127);
+            label3.Location = new Point(83, 127);
             label3.Name = "label3";
             label3.Size = new Size(92, 25);
             label3.TabIndex = 9;
@@ -105,7 +109,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(112, 288);
+            label4.Location = new Point(62, 288);
             label4.Name = "label4";
             label4.Size = new Size(117, 25);
             label4.TabIndex = 10;
@@ -115,7 +119,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(122, 175);
+            label5.Location = new Point(72, 175);
             label5.Name = "label5";
             label5.Size = new Size(107, 25);
             label5.TabIndex = 11;
@@ -125,7 +129,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(46, 224);
+            label6.Location = new Point(-4, 224);
             label6.Name = "label6";
             label6.Size = new Size(191, 25);
             label6.TabIndex = 12;
@@ -133,7 +137,7 @@
             // 
             // dtpPackageStartDate
             // 
-            dtpPackageStartDate.Location = new Point(242, 79);
+            dtpPackageStartDate.Location = new Point(192, 79);
             dtpPackageStartDate.Name = "dtpPackageStartDate";
             dtpPackageStartDate.Size = new Size(348, 27);
             dtpPackageStartDate.TabIndex = 15;
@@ -141,7 +145,7 @@
             // 
             // dtpPackageEndDate
             // 
-            dtpPackageEndDate.Location = new Point(242, 127);
+            dtpPackageEndDate.Location = new Point(192, 127);
             dtpPackageEndDate.Name = "dtpPackageEndDate";
             dtpPackageEndDate.Size = new Size(348, 27);
             dtpPackageEndDate.TabIndex = 16;
@@ -149,7 +153,7 @@
             // 
             // txtPackageBasePrice
             // 
-            txtPackageBasePrice.Location = new Point(240, 175);
+            txtPackageBasePrice.Location = new Point(190, 175);
             txtPackageBasePrice.Name = "txtPackageBasePrice";
             txtPackageBasePrice.Size = new Size(349, 27);
             txtPackageBasePrice.TabIndex = 17;
@@ -157,7 +161,7 @@
             // 
             // txtAgencyCommission
             // 
-            txtAgencyCommission.Location = new Point(240, 223);
+            txtAgencyCommission.Location = new Point(190, 223);
             txtAgencyCommission.Name = "txtAgencyCommission";
             txtAgencyCommission.Size = new Size(349, 27);
             txtAgencyCommission.TabIndex = 18;
@@ -174,7 +178,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(84, 32);
+            label7.Location = new Point(34, 32);
             label7.Name = "label7";
             label7.Size = new Size(145, 25);
             label7.TabIndex = 22;
@@ -182,18 +186,18 @@
             // 
             // txtDesc
             // 
-            txtDesc.Location = new Point(241, 288);
+            txtDesc.Location = new Point(191, 288);
             txtDesc.Margin = new Padding(3, 4, 3, 4);
             txtDesc.MaxLength = 51;
             txtDesc.Name = "txtDesc";
-            txtDesc.Size = new Size(349, 195);
+            txtDesc.Size = new Size(349, 73);
             txtDesc.TabIndex = 26;
             txtDesc.Tag = "Description";
             txtDesc.Text = "";
             // 
             // txtPackageName
             // 
-            txtPackageName.Location = new Point(241, 31);
+            txtPackageName.Location = new Point(191, 31);
             txtPackageName.Name = "txtPackageName";
             txtPackageName.Size = new Size(349, 27);
             txtPackageName.TabIndex = 27;
@@ -207,13 +211,13 @@
             dgvProductSuppliers.AllowUserToResizeRows = false;
             dgvProductSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProductSuppliers.Columns.AddRange(new DataGridViewColumn[] { Product, Supplier });
-            dgvProductSuppliers.Location = new Point(617, 31);
+            dgvProductSuppliers.Location = new Point(547, 31);
             dgvProductSuppliers.Name = "dgvProductSuppliers";
             dgvProductSuppliers.ReadOnly = true;
             dgvProductSuppliers.RowHeadersWidth = 51;
             dgvProductSuppliers.RowTemplate.Height = 29;
             dgvProductSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductSuppliers.Size = new Size(343, 298);
+            dgvProductSuppliers.Size = new Size(446, 298);
             dgvProductSuppliers.TabIndex = 30;
             // 
             // Product
@@ -232,12 +236,47 @@
             Supplier.ReadOnly = true;
             Supplier.Width = 125;
             // 
+            // dgvExistingProductSuppliers
+            // 
+            dgvExistingProductSuppliers.AllowUserToAddRows = false;
+            dgvExistingProductSuppliers.AllowUserToDeleteRows = false;
+            dgvExistingProductSuppliers.AllowUserToResizeColumns = false;
+            dgvExistingProductSuppliers.AllowUserToResizeRows = false;
+            dgvExistingProductSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExistingProductSuppliers.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2 });
+            dgvExistingProductSuppliers.Location = new Point(547, 338);
+            dgvExistingProductSuppliers.MultiSelect = false;
+            dgvExistingProductSuppliers.Name = "dgvExistingProductSuppliers";
+            dgvExistingProductSuppliers.ReadOnly = true;
+            dgvExistingProductSuppliers.RowHeadersWidth = 51;
+            dgvExistingProductSuppliers.RowTemplate.Height = 29;
+            dgvExistingProductSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvExistingProductSuppliers.Size = new Size(446, 139);
+            dgvExistingProductSuppliers.TabIndex = 31;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Product";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Supplier";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 125;
+            // 
             // frmAddModifyPackages
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(997, 503);
+            Controls.Add(dgvExistingProductSuppliers);
             Controls.Add(dgvProductSuppliers);
             Controls.Add(txtPackageName);
             Controls.Add(txtDesc);
@@ -259,6 +298,7 @@
             Text = "frmAddModifyPackages";
             Load += frmAddModifyPackages_Load;
             ((System.ComponentModel.ISupportInitialize)dgvProductSuppliers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExistingProductSuppliers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -283,5 +323,8 @@
         private DataGridView dgvProductSuppliers;
         private DataGridViewTextBoxColumn Product;
         private DataGridViewTextBoxColumn Supplier;
+        private DataGridView dgvExistingProductSuppliers;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

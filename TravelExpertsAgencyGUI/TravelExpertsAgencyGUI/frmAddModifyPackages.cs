@@ -62,12 +62,13 @@ namespace TravelExpertsAgencyGUI
 
         private void btnOkPackage_Click(object sender, EventArgs e)
         {
-            
-            if(Validator.IsPresent(txtPackageName) &&
+
+            if (Validator.IsPresent(txtPackageName) &&
                 Validator.IsPresent(txtDesc) &&
                 Validator.IsValidEndDate(dtpPackageStartDate, dtpPackageEndDate) &&
-                Validator.isValidCommissionValue(txtPackageBasePrice, txtAgencyCommission)
-                )           
+                Validator.isValidCommissionValue(txtPackageBasePrice, txtAgencyCommission) &&
+                Validator.IsValidDescription(txtDesc)
+                )
             {
                 if (isAdd)
                 {

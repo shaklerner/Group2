@@ -214,6 +214,7 @@
             // 
             txtDesc.Location = new Point(241, 355);
             txtDesc.Margin = new Padding(3, 4, 3, 4);
+            txtDesc.MaxLength = 51;
             txtDesc.Name = "txtDesc";
             txtDesc.Size = new Size(349, 128);
             txtDesc.TabIndex = 26;

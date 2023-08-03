@@ -117,7 +117,7 @@ namespace TravelExpertsAgencyGUI
         /// </summary>
         /// <param name="textBox"></param>
         /// <returns>true if within allowed character length, false if not</returns>
-        public static bool IsValidDescription(TextBox textBox)
+        public static bool IsValidDescription(RichTextBox textBox)
         {
             bool isValid = true;
             if (textBox.Text.Length > 50)

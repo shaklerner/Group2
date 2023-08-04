@@ -106,35 +106,47 @@ namespace TravelExpertsAgencyGUI
             this.Close();
         }
 
+        // Event handler for the CellClick event of the dgvPackages DataGridView.
+        // This event is triggered when a cell in the DataGridView is clicked.
         private void dgvPackages_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) // Ensure that a valid row is clicked
             {
+                // Get the clicked row from the DataGridView.
                 DataGridViewRow row = dgvPackages.Rows[e.RowIndex];
-                cellSelectedPackageId = Convert.ToInt32(row.Cells["PackageId"].Value);
 
+                // Retrieve and store the PackageId value from the clicked row.
+                cellSelectedPackageId = Convert.ToInt32(row.Cells["PackageId"].Value);
             }
         }
 
+        // Method to get the selected package from the DataGridView.
         public void getSelectedPackage()
         {
+            // Check if there is at least one selected row or cell in the dgvPackages DataGridView.
             if (dgvPackages.SelectedRows.Count >= 0 || dgvPackages.SelectedCells.Count >= 0)
             {
                 try
                 {
                     using (TravelExpertsContext db = new TravelExpertsContext())
                     {
+                        // Find the Package object in the database based on the stored cellSelectedPackageId value.
                         currentPackage = db.Packages.Find(cellSelectedPackageId);
                     }
                 }
                 catch (Exception ex)
                 {
+                    // Show an error message box if there's an exception while processing the selected package for editing.
                     MessageBox.Show("Error while processing selected package for editing." + ex.Message,
                         ex.GetType().ToString());
                 }
             }
-            else return;
+            else
+            {
+                return; // If there are no selected rows or cells, return without processing any package data.
+            }
         }
+
 
         private void btnUpdatePackages_Click(object sender, EventArgs e)
         {

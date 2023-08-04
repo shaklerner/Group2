@@ -83,7 +83,9 @@ namespace TravelExpertsAgencyGUI
                     dgvPackages.Columns[3].HeaderText = "End Date";
                     dgvPackages.Columns[4].HeaderText = "Description";
                     dgvPackages.Columns[5].HeaderText = "Base Price";
+                    dgvPackages.Columns[5].DefaultCellStyle.Format = "C2";
                     dgvPackages.Columns[6].HeaderText = "Agency Commission";
+                    dgvPackages.Columns[6].DefaultCellStyle.Format = "C2";
 
                     // Alignments
                     dgvPackages.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

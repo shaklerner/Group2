@@ -49,6 +49,7 @@
             dgvExistingProductSuppliers = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProductSuppliers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvExistingProductSuppliers).BeginInit();
             SuspendLayout();
@@ -211,13 +212,13 @@
             dgvProductSuppliers.AllowUserToResizeRows = false;
             dgvProductSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProductSuppliers.Columns.AddRange(new DataGridViewColumn[] { Product, Supplier });
-            dgvProductSuppliers.Location = new Point(547, 31);
+            dgvProductSuppliers.Location = new Point(547, 64);
             dgvProductSuppliers.Name = "dgvProductSuppliers";
             dgvProductSuppliers.ReadOnly = true;
             dgvProductSuppliers.RowHeadersWidth = 51;
             dgvProductSuppliers.RowTemplate.Height = 29;
             dgvProductSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductSuppliers.Size = new Size(446, 298);
+            dgvProductSuppliers.Size = new Size(446, 249);
             dgvProductSuppliers.TabIndex = 30;
             // 
             // Product
@@ -244,14 +245,14 @@
             dgvExistingProductSuppliers.AllowUserToResizeRows = false;
             dgvExistingProductSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvExistingProductSuppliers.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2 });
-            dgvExistingProductSuppliers.Location = new Point(547, 338);
+            dgvExistingProductSuppliers.Location = new Point(547, 319);
             dgvExistingProductSuppliers.MultiSelect = false;
             dgvExistingProductSuppliers.Name = "dgvExistingProductSuppliers";
             dgvExistingProductSuppliers.ReadOnly = true;
             dgvExistingProductSuppliers.RowHeadersWidth = 51;
             dgvExistingProductSuppliers.RowTemplate.Height = 29;
             dgvExistingProductSuppliers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvExistingProductSuppliers.Size = new Size(446, 139);
+            dgvExistingProductSuppliers.Size = new Size(446, 158);
             dgvExistingProductSuppliers.TabIndex = 31;
             // 
             // dataGridViewTextBoxColumn1
@@ -270,12 +271,23 @@
             dataGridViewTextBoxColumn2.ReadOnly = true;
             dataGridViewTextBoxColumn2.Width = 125;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(547, 30);
+            label1.Name = "label1";
+            label1.Size = new Size(125, 25);
+            label1.TabIndex = 32;
+            label1.Text = "Add Products";
+            // 
             // frmAddModifyPackages
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(997, 503);
+            Controls.Add(label1);
             Controls.Add(dgvExistingProductSuppliers);
             Controls.Add(dgvProductSuppliers);
             Controls.Add(txtPackageName);
@@ -326,5 +338,6 @@
         private DataGridView dgvExistingProductSuppliers;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private Label label1;
     }
 }

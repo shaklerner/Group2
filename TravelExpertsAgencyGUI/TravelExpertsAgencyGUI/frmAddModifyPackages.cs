@@ -214,9 +214,9 @@ namespace TravelExpertsAgencyGUI
             {
                 txtPackageName.Text = package.PackageId.ToString();
                 txtPackageName.Text = package.PkgName;
-                txtPackageBasePrice.Text = package.PkgBasePrice.ToString();
+                txtPackageBasePrice.Text = $"{package.PkgBasePrice:F2}";
                 txtDesc.Text = package.PkgDesc;
-                txtAgencyCommission.Text = package.PkgAgencyCommission.ToString();
+                txtAgencyCommission.Text = $"{package.PkgAgencyCommission:F2}";
                 dtpPackageStartDate.Value = Convert.ToDateTime(package.PkgStartDate);
                 dtpPackageEndDate.Value = Convert.ToDateTime(package.PkgEndDate);
                 // Call the method to retrieve SupplierId and ProductId based on PackageId

@@ -238,7 +238,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmMainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Travel Experts";
             pnlLeftSide.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlTopSIde.ResumeLayout(false);

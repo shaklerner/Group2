@@ -111,6 +111,8 @@ namespace TravelExpertsAgencyGUI
             if (Validator.IsPresent(txtPackageName) &&
                 Validator.IsPresent(txtDesc) &&
                 Validator.IsValidEndDate(dtpPackageStartDate, dtpPackageEndDate) &&
+                Validator.IsPresent(txtPackageBasePrice) &&
+                Validator.IsPresent(txtAgencyCommission) &&
                 Validator.isValidCommissionValue(txtPackageBasePrice, txtAgencyCommission) &&
                 Validator.IsValidDescription(txtDesc))
             {
